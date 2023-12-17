@@ -1,11 +1,12 @@
 import "./App.scss";
-import StartPage from "./screens/StartPage";
+import LoginPage from "./screens/LoginPage";
+
 
 function App() {
   return (
     <>
-      <StartPage />
-    </>
+      <LoginPage />
+   </>
   );
 }
 
