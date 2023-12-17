@@ -1,10 +1,10 @@
 import "./App.scss";
-import Button from "./components/Button";
+import StartPage from "./screens/StartPage";
 
 function App() {
   return (
     <>
-      
+      <StartPage />
     </>
   );
 }

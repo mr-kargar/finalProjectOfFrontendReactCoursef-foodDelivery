@@ -1,0 +1,37 @@
+.startPage{
+    width: 414px;
+    height: 896px;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: darken($color: $color-primary, $amount: 1%);
+}
+
+.imageContainer{
+    width: 73px;
+    height: 73px;
+    background-color: $color-white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 49px;
+    margin-top: 56px;
+}
+
+.logo{
+    width: 49px;
+    height: 49px;
+   
+}
+
+p{
+    font-size: 65px;
+    font-weight: 800;
+    color: $color-white;
+    margin-left: 51px;
+    margin-top: 31px;
+}
+
+.startPageImage{
+    margin-top: 30px;
+}
