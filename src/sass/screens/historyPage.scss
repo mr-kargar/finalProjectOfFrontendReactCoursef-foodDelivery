@@ -1,0 +1,41 @@
+.historyPage {
+  width: 414px;
+  height: 896px;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  background-color: lighten($color: $background-color-primary, $amount: 3%);
+}
+
+.header {
+  display: flex;
+
+  svg {
+    position: absolute;
+    margin-left: 41px;
+    margin-top: 60px;
+  }
+
+  h3 {
+    text-align: center;
+    margin: auto;
+    margin-top: 60px;
+  }
+}
+
+.content {
+  height: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .emptyHistory {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  
+}
