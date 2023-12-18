@@ -1,12 +1,12 @@
 import "./App.scss";
-import SearchPage from "./screens/SearchPage";
+import OfferAndPromoPage from "./screens/OfferAndPromoPage";
 
 
 
 function App() {
   return (
     <>
-      <SearchPage />
+      <OfferAndPromoPage />
    </>
   );
 }
