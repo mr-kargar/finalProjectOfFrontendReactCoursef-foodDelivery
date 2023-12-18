@@ -1,12 +1,12 @@
 import "./App.scss";
-import NoInternetPage from "./screens/NoInternetPage";
+import SearchPage from "./screens/SearchPage";
 
 
 
 function App() {
   return (
     <>
-      <NoInternetPage />
+      <SearchPage />
    </>
   );
 }
