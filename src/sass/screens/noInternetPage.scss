@@ -1,0 +1,13 @@
+.noInternetPage{
+    width: 414px;
+    height: 896px;
+    border: 1px solid #000000;
+    border-radius: 20px;
+    background-color: lighten($color: $background-color-primary, $amount: 3%);
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+
+}

@@ -1,12 +1,12 @@
 import "./App.scss";
-import HistoryPage from "./screens/HistoryPage";
-import OrdersPage from "./screens/OrdersPage";
+import NoInternetPage from "./screens/NoInternetPage";
+
 
 
 function App() {
   return (
     <>
-      <OrdersPage />
+      <NoInternetPage />
    </>
   );
 }
