@@ -17,29 +17,38 @@
 
     .loginSignUpContainer {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-evenly;
       width: 414px;
       position: absolute;
       bottom: 0;
-      margin-bottom: 16px;
       font-size: 1.13rem;
       font-weight: 600;
       
       &:hover {
         cursor: pointer;
       }
+
+      p{
+        padding-bottom: 16px;
+        padding-left: 50px;
+        padding-right: 50px;
+      }
     }
   }
 
   form {
-    display: flex;
+    display: none;
     flex-direction: column;
     padding: 0 50px;
     margin-bottom: 190px;
 
     :first-child {
       margin-top: 64px;
+      
+
+      
     }
+
 
     label {
       margin-top: 40px;
@@ -58,5 +67,28 @@
         outline: none;
       }
     }
+
+  
+  }
+
+  .loginMargin{
+    input:last-of-type{
+      margin-bottom: 190px;
+    }
+  }
+
+  .signUpMargin{
+    input:last-of-type{
+      margin-bottom: 97px;
+    }
+  }
+
+  .show{
+    display: flex;
+  }
+
+  .showBorder{
+    border-bottom: 3px $color-primary solid;
+    
   }
 }
