@@ -1,0 +1,19 @@
+.hamburgerMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  .hamburgerMenu__line1 {
+    width: 30px;
+    height: 3px;
+    background-color: #000000;
+    border-radius: 3px;
+  }
+
+  .hamburgerMenu__line2 {
+    width: 20px;
+    height: 3px;
+    background-color: #000000;
+    border-radius: 3px;
+  }
+}
