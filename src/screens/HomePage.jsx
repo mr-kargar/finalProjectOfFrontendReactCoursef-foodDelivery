@@ -44,7 +44,16 @@ function HomePage() {
       <div className="homePage-content">
         <h1 className="homePage-content-title">Delicious food for you</h1>
         <SearchBar />
+        <div className="homePage-content-filter">
+          <div className="homePage-content-filter-item">All</div>
+          <div className="homePage-content-filter-item">Burgers</div>
+          <div className="homePage-content-filter-item">Pizza</div>
+          <div className="homePage-content-filter-item">Sushi</div>
+          <div className="homePage-content-filter-item">Salads</div>
+        </div>
+        <h3>see more</h3>
         <div className="homePage-content-food">
+          
         <FoodView />
         <FoodView />
         <FoodView />

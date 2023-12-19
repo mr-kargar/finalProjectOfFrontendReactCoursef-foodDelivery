@@ -4,6 +4,7 @@
     border: 1px solid #000000;
     border-radius: 20px;
     background-color: lighten($color: $background-color-primary, $amount: 3%);
+    position: relative;
 
     &-header{
         display: flex;
@@ -18,15 +19,30 @@
             font-size: 2.2rem;
             margin-bottom: 28px;
             margin-left: 50px;
-           
-           
-            
+        }
+
+        &-filter{
+            display: flex;
+            justify-content: space-between;
+            padding: 0px 41px 0px 41px;
+            margin-bottom: 100px;
+            margin-top: 46px;
+        }
+
+        h3{
+            font-weight: 700;
+            font-size: 1.6rem;
+            margin-bottom: 28px;
+            margin-right: 50px;
+        
         }
 
         &-food{
             display: flex;
             
             padding: 0px 41px 0px 41px;
+            gap: 30px;
+            
         }
     }
 }
