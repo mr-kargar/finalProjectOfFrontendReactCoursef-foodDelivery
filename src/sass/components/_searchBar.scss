@@ -1,0 +1,21 @@
+.searchBar {
+  position: relative;
+  
+
+  input {
+    width: 314px;
+    height: 60px;
+    border-radius: 30px;
+    border: none;
+    background-color: darken($color: $background-color-primary, $amount: 1%);
+    padding-left: 70px;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .searchBarIcon {
+    position: absolute;
+    top: 20px;
+    left: 35px;
+  }
+}
