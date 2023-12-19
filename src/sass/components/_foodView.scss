@@ -1,0 +1,36 @@
+.foodView {
+  width: 220px;
+  height: 270px;
+  border: none;
+  border-radius: 30px;
+  background-color: $color-white;
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 165px;
+    height: 165px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: -50px;
+  }
+
+  &-content {
+    padding-top: 145px;
+    text-align: center;
+
+    &-title {
+        font-size: 1.4rem ;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    &-price {
+        color: $color-primary;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+  }
+}
