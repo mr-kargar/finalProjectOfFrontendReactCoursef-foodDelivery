@@ -4,4 +4,29 @@
     border: 1px solid #000000;
     border-radius: 20px;
     background-color: lighten($color: $background-color-primary, $amount: 3%);
+
+    &-header{
+        display: flex;
+        justify-content: space-between;
+        padding: 74px 41px 50px 41px;
+    }
+
+    &-content{
+
+        &-title{
+            font-weight: 700;
+            font-size: 2.2rem;
+            margin-bottom: 28px;
+            margin-left: 50px;
+           
+           
+            
+        }
+
+        &-food{
+            display: flex;
+            
+            padding: 0px 41px 0px 41px;
+        }
+    }
 }
