@@ -1,12 +1,12 @@
 import "./App.scss";
-import MyProfilePage from "./screens/MyProfilePage";
+import FoodViewPage from "./screens/FoodViewPage";
 
 
 
 function App() {
   return (
     
-     <MyProfilePage />
+     <FoodViewPage />
    
   );
 }
