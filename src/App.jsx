@@ -1,12 +1,12 @@
 import "./App.scss";
-import HomePage from "./screens/HomePage";
+import SearchPageWithItems from "./screens/SearchPageWithItems";
 
 
 
 function App() {
   return (
     <>
-      <HomePage />
+     <SearchPageWithItems  />
    </>
   );
 }
