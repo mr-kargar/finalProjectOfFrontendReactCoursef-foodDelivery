@@ -1,13 +1,13 @@
 import "./App.scss";
-import SearchPageWithItems from "./screens/SearchPageWithItems";
+import MyProfilePage from "./screens/MyProfilePage";
 
 
 
 function App() {
   return (
-    <>
-     <SearchPageWithItems  />
-   </>
+    
+     <MyProfilePage />
+   
   );
 }
 
