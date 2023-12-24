@@ -3,6 +3,8 @@
     $bg-color: $background-color-primary,
     $border-color: $color-dark
   );
+
+  transition: all 0.5s ease-in-out;
   position: relative;
 
   &-header {
@@ -45,7 +47,7 @@
 
 .mainMenu {
   @include main-template($bg-color: $color-primary, $border-color: $color-dark);
-
+  
   position: absolute;
   top: 10px;
   z-index: -10;
@@ -86,6 +88,6 @@
     
     border: none;
     transform: translate(220px,0px) scale(0.7);
-    overflow: hidden;
+    
    
 }
