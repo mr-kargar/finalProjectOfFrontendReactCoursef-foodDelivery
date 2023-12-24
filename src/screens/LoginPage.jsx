@@ -11,20 +11,27 @@ function LoginPage() {
 
   return (
     <div className="loginPage">
-      <div>
-        <div className="logoContainer">
+      <div className="loginPage-content">
+        <div className="loginPage-content-topContainer">
           <img
             src="src\assets\images\logo.png"
             alt="logo"
-            className="logo-large"
+            className="loginPage-content-logoContainer-logo"
           />
-          <div className="loginSignUpContainer" onClick={showForm}>
+          <div
+            className="loginPage-content-topContainer-loginSignUpContainer"
+            onClick={showForm}
+          >
             <p className={`${show ? "showBorder" : null}`}>Login</p>
             <p className={`${show ? null : "showBorder"}`}>Sign-up</p>
           </div>
         </div>
 
-        <form className={`formContainer loginMargin ${show ? "show" : null}`}>
+        <form
+          className={`loginPage-content-formContainer loginMargin ${
+            show ? "show" : null
+          }`}
+        >
           <label htmlFor="Email address">Email address:</label>
           <input type="email" id="emailAddress" />
 
@@ -33,7 +40,11 @@ function LoginPage() {
           <Button label={"Login"} className={"primary"} />
         </form>
 
-        <form className={`formContainer signUpMargin ${show ? null : "show"}`}>
+        <form
+          className={`loginPage-content-formContainer signUpMargin ${
+            show ? null : "show"
+          }`}
+        >
           <label htmlFor="Email address">Email address:</label>
           <input type="email" id="emailAddress" />
 

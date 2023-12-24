@@ -1,0 +1,88 @@
+.loginPage {
+  @include main-template(
+    $bg-color: $background-color-primary,
+    $border-color: $color-dark
+  );
+
+  &-content {
+    &-topContainer {
+      background-color: $color-white;
+      height: 382px;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+
+      &-loginSignUpContainer {
+        display: flex;
+        justify-content: space-evenly;
+        width: 414px;
+        position: absolute;
+        bottom: 0;
+        font-size: 1.13rem;
+        font-weight: 600;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        p {
+          padding-bottom: 16px;
+          padding-left: 50px;
+          padding-right: 50px;
+        }
+
+        .showBorder {
+          border-bottom: 3px $color-primary solid;
+        }
+      }
+    }
+
+    &-formContainer {
+      display: none;
+      flex-direction: column;
+      padding: 0 50px;
+      margin-bottom: 190px;
+
+      :first-child {
+        margin-top: 64px;
+      }
+
+      label {
+        margin-top: 40px;
+        color: #000000;
+        opacity: 0.4;
+      }
+
+      input {
+        margin-top: 9px;
+        border: none;
+        border-bottom: 1px solid #000000;
+        background-color: transparent;
+        padding: 5px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .loginMargin {
+      input:last-of-type {
+        margin-bottom: 190px;
+      }
+    }
+
+    .signUpMargin {
+      input:last-of-type {
+        margin-bottom: 97px;
+      }
+    }
+
+    .show {
+      display: flex;
+    }
+  }
+}
