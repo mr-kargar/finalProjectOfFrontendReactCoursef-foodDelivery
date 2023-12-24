@@ -1,9 +1,5 @@
 .startPage{
-    width: 414px;
-    height: 896px;
-    border: 1px solid #000000;
-    border-radius: 20px;
-    background-color: darken($color: $color-primary, $amount: 1%);
+    @include main-template($bg-color: $color-primary, $border-color: $color-dark);
 
 
 .imageContainer{

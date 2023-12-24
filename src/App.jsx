@@ -1,12 +1,11 @@
 import "./App.scss";
-import FoodViewPage from "./screens/FoodViewPage";
-
+import StartPage from "./screens/StartPage";
 
 
 function App() {
   return (
     
-     <FoodViewPage />
+   <StartPage/>
    
   );
 }
