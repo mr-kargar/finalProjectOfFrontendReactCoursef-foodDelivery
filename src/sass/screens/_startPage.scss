@@ -1,36 +1,38 @@
-.startPage{
-    @include main-template($bg-color: $color-primary, $border-color: $color-dark);
+.startPage {
+  @include main-template($bg-color: $color-primary, $border-color: $color-dark);
 
+  &-content {
+    &-logoContainer {
+      width: 73px;
+      height: 73px;
+      background-color: $color-white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 49px;
+      margin-top: 56px;
 
-.imageContainer{
-    width: 73px;
-    height: 73px;
-    background-color: $color-white;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 49px;
-    margin-top: 56px;
-}
+      &-logo {
+        width: 49px;
+        height: 49px;
+      }
+    }
 
-.logo{
-    width: 49px;
-    height: 49px;
-   
-}
+    p {
+      font-size: 65px;
+      font-weight: 800;
+      color: $color-white;
+      margin-left: 51px;
+      margin-top: 31px;
+    }
 
-p{
-    font-size: 65px;
-    font-weight: 800;
-    color: $color-white;
-    margin-left: 51px;
-    margin-top: 31px;
-}
+    &-image {
+      margin-top: 30px;
+    }
+  }
 
-.startPageImage{
-    margin-top: 30px;
-}
-
-
+  Button {
+    margin-left: 40px;
+  }
 }
