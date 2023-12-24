@@ -1,48 +1,91 @@
-.homePage{
-    width: 414px;
-    height: 896px;
-    border: 1px solid #000000;
-    border-radius: 20px;
-    background-color: lighten($color: $background-color-primary, $amount: 3%);
-    position: relative;
+.homePage {
+  @include main-template(
+    $bg-color: $background-color-primary,
+    $border-color: $color-dark
+  );
+  position: relative;
 
-    &-header{
-        display: flex;
-        justify-content: space-between;
-        padding: 74px 41px 50px 41px;
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 74px 41px 50px 41px;
+  }
+
+  &-content {
+    &-title {
+      font-weight: 700;
+      font-size: 2.2rem;
+      margin-bottom: 28px;
+      margin-left: 50px;
     }
 
-    &-content{
-
-        &-title{
-            font-weight: 700;
-            font-size: 2.2rem;
-            margin-bottom: 28px;
-            margin-left: 50px;
-        }
-
-        &-filter{
-            display: flex;
-            justify-content: space-between;
-            padding: 0px 41px 0px 41px;
-            margin-bottom: 100px;
-            margin-top: 46px;
-        }
-
-        h3{
-            font-weight: 700;
-            font-size: 1.6rem;
-            margin-bottom: 28px;
-            margin-right: 50px;
-        
-        }
-
-        &-food{
-            display: flex;
-            
-            padding: 0px 41px 0px 41px;
-            gap: 30px;
-            
-        }
+    &-filter {
+      display: flex;
+      justify-content: space-between;
+      padding: 0px 41px 0px 41px;
+      margin-bottom: 100px;
+      margin-top: 46px;
     }
+
+    h3 {
+      font-weight: 700;
+      font-size: 1.6rem;
+      margin-bottom: 28px;
+      margin-right: 50px;
+    }
+
+    &-food {
+      display: flex;
+
+      padding: 0px 41px 0px 41px;
+      gap: 30px;
+    }
+  }
+}
+
+.mainMenu {
+  @include main-template($bg-color: $color-primary, $border-color: $color-dark);
+
+  position: absolute;
+  top: 10px;
+  z-index: -10;
+
+  &-list {
+    margin-top: 161px;
+    margin-left: 38px;
+    color: $color-white;
+
+    li {
+      margin-bottom: 52px;
+      display: flex;
+      gap: 12px;
+
+      span {
+        border-bottom: 1px solid
+          darken($color: $background-color-primary, $amount: 30%);
+        padding-bottom: 27px;
+        padding-right: 80px;
+        font-weight: 600;
+        font-size: 1.06rem;
+        display: inline-block;
+      }
+    }
+  }
+
+  &-signOut {
+    margin-left: 41px;
+    color: $color-white;
+    font-weight: 600;
+    font-size: 1.06rem;
+    bottom: 87px;
+    position: absolute;
+  }
+}
+
+.showMenu{
+    
+    border: none;
+    transform: translate(220px,0px) scale(0.7);
+    overflow: hidden;
+   
 }

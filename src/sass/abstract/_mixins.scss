@@ -1,7 +1,7 @@
-@mixin main-template ($bg-color , $border-color){
+@mixin main-template ($bg-color  ,$percent:0% , $border-color){
     width: 414px;
     height: 896px;
     border: 1px solid $border-color;
     border-radius: 20px;
-    background-color: darken($color: $bg-color, $amount: 1%);
+    background-color: darken($color: $bg-color, $amount: $percent);
 }

@@ -1,7 +1,8 @@
 .loginPage {
   @include main-template(
     $bg-color: $background-color-primary,
-    $border-color: $color-dark
+    $border-color: $color-dark,
+    $percent: 1%
   );
 
   &-content {

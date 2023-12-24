@@ -1,5 +1,5 @@
 .startPage {
-  @include main-template($bg-color: $color-primary, $border-color: $color-dark);
+  @include main-template($bg-color: $color-primary, $border-color: $color-dark , $percent: 1%);
 
   &-content {
     &-logoContainer {
