@@ -1,7 +1,13 @@
 import React from "react";
 import Button from "../components/button";
+import { useNavigate } from "react-router-dom"; 
 
 function OrdersPage() {
+const navigate = useNavigate();
+
+const handleStartOrdering = () => {
+navigate("/home");
+}
   return (
     <div className="ordersPage">
       <div className="header">
@@ -69,7 +75,7 @@ function OrdersPage() {
           <p>Hit the orange button down below to Create an order</p>
         </div>
       </div>
-      <Button label={"Start Ordering"} className={"primary historyBtn"} />
+      <Button label={"Start Ordering"} className={"primary historyBtn"} onClick={handleStartOrdering} />
     </div>
   );
 }

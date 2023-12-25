@@ -1,7 +1,14 @@
 import React from "react";
 import Button from "../components/button";
+import { useNavigate } from "react-router-dom";
 
 function HistoryPage() {
+  const navigate = useNavigate();
+
+  const handleStartOrdering = () => {
+    navigate("/home");
+  }
+
   return (
     <div className="historyPage">
       <div className="header">
@@ -42,7 +49,7 @@ function HistoryPage() {
         </div>
         
       </div>
-      <Button label={"Start Ordering"} className={"primary historyBtn"} />
+      <Button label={"Start Ordering"} className={"primary historyBtn"} onClick={handleStartOrdering}/>
     </div>
   );
 }

@@ -15,7 +15,7 @@ function showMenu(){
 
   return (
     <>
-      <div className={`homePage ${show ? 'showMenu' : null}`}>
+      <div className={`homePage ${show ? 'showMenu' : null}`} >
         <div className="homePage-header">
           <HamburgerMenu showMenu={showMenu}/>
           <svg
@@ -71,7 +71,7 @@ function showMenu(){
         <BottomMenu />
       </div>
 
-      <div className="mainMenu">
+      <div className="mainMenu" onClick={showMenu}>
         <ul className={`mainMenu-list ${show ? 'showUl' : null}`}>
           <li>
             <svg
