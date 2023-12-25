@@ -1,12 +1,19 @@
 import React from "react";
 import { useState } from "react";
 import Button from "../components/button";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const [show, setShow] = useState(true);
 
   function showForm() {
     setShow(!show);
+  }
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/home");
   }
 
   return (
@@ -37,7 +44,7 @@ function LoginPage() {
 
           <label htmlFor="password">Password:</label>
           <input type="password" id="password" />
-          <Button label={"Login"} className={"primary"} />
+          <Button label={"Login"} className={"primary"} onClick={handleClick} />
         </form>
 
         <form
@@ -52,7 +59,7 @@ function LoginPage() {
           <input type="password" id="password" />
           <label htmlFor="passwordConfirm">Password Confirm :</label>
           <input type="password" id="passwordConfirm" />
-          <Button label={"Sign Up"} className={"primary"} />
+          <Button label={"Sign Up"} className={"primary"} onClick={handleClick}/>
         </form>
       </div>
     </div>

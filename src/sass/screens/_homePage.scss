@@ -6,6 +6,7 @@
 
   transition: all 0.5s ease-in-out;
   position: relative;
+  z-index: 1;
 
   &-header {
     display: flex;
@@ -47,10 +48,9 @@
 
 .mainMenu {
   @include main-template($bg-color: $color-primary, $border-color: $color-dark);
-  
+
   position: absolute;
   top: 10px;
-  z-index: -10;
 
   &-list {
     margin-top: 161px;
@@ -84,10 +84,12 @@
   }
 }
 
-.showMenu{
-    
-    border: none;
-    transform: translate(220px,0px) scale(0.7);
-    
-   
+.showMenu {
+  border: none;
+  transform: translate(220px, 0px) scale(0.7);
+}
+
+.showUl li {
+  position: relative;
+  
 }

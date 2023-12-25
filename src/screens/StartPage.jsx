@@ -1,7 +1,14 @@
 import React from "react";
 import Button from "../components/button";
+import { useNavigate } from "react-router-dom";
 
 function startPage() {
+
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/login");
+  }
+
   return (
     <div className="startPage">
       <div className="startPage-content">
@@ -15,7 +22,7 @@ function startPage() {
           className="startPage-content-image"
         />
       </div>
-      <Button label={"Get started"} className={"get-started"} />
+      <Button label={"Get started"} className={"get-started"} onClick={handleClick} />
     </div>
   );
 }

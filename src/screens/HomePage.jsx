@@ -4,6 +4,7 @@ import SearchBar from "../components/SearchBar";
 import FoodView from "../components/FoodView";
 import BottomMenu from "../components/BottomMenu";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function HomePage() {
 const [show , setShow] = useState(false);
@@ -71,7 +72,7 @@ function showMenu(){
       </div>
 
       <div className="mainMenu">
-        <ul className="mainMenu-list">
+        <ul className={`mainMenu-list ${show ? 'showUl' : null}`}>
           <li>
             <svg
               width="24"
@@ -93,7 +94,7 @@ function showMenu(){
                 fill="white"
               />
             </svg>
-            <span>Profile</span>
+            <span><Link to='../profile'>Profile</Link></span>
           </li>
           <li>
             <svg
@@ -109,7 +110,7 @@ function showMenu(){
               />
             </svg>
 
-            <span>orders</span>
+            <span><Link to='../order'>orders</Link></span>
           </li>
           <li>
             <svg
@@ -129,7 +130,7 @@ function showMenu(){
               />
             </svg>
 
-            <span>offer and promo</span>
+            <span><Link to='../offer'>offer and promo</Link></span>
           </li>
           <li>
             <svg
@@ -145,7 +146,7 @@ function showMenu(){
               />
             </svg>
 
-            <span>Privacy policy</span>
+            <span><Link to='#'>Privacy policy</Link></span>
           </li>
           <li>
             <svg
@@ -168,7 +169,7 @@ function showMenu(){
               </defs>
             </svg>
 
-            <span>Security</span>
+            <span><Link to='#'>Security</Link></span>
           </li>
         </ul>
         <div className="mainMenu-signOut">
