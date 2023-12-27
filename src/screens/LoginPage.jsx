@@ -2,6 +2,9 @@ import React from "react";
 import { useState } from "react";
 import Button from "../components/button";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { userLogin } from "../redux/userSlice";
 
 function LoginPage() {
   const [show, setShow] = useState(true);
@@ -10,11 +13,68 @@ function LoginPage() {
     setShow(!show);
   }
 
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate("/home");
-  }
+  const loginHandler = async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("emailAddressLogin").value;
+    const password = document.getElementById("passwordLogin").value;
+    if (email === "" || password === "") {
+      alert("Please fill all the fields");
+      return;
+    } else {
+      try {
+        const userData = { email, password };
+      dispatch(userLogin(userData));
+
+        // if (response.status === 200) {
+        //   alert("User logged in successfully");
+        //   localStorage.setItem("user", response.data);
+        //   navigate("/home");
+        // } else {
+        //   alert("Something went wrong");
+        // }
+      } catch (error) {
+        console.error(error);
+        alert("Something went wrong");
+      }
+    }
+  };
+
+  const signUpHandler = async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("emailAddressSignUp").value;
+    const password = document.getElementById("passwordSignUp").value;
+    const passwordConfirm = document.getElementById(
+      "passwordConfirmSignUp"
+    ).value;
+    if (email === "" || password === "" || passwordConfirm === "") {
+      alert("Please fill all the fields");
+      return;
+    } else if (password !== passwordConfirm) {
+      alert("Password and Confirm Password should be same");
+      return;
+    } else {
+      try {
+        const response = await axios.post("http://localhost:3000/sign-up", {
+          email,
+          password,
+        });
+
+        if (response.status === 200) {
+          alert("User created successfully");
+          navigate("/home");
+        } else {
+          alert("Something went wrong");
+        }
+      } catch (error) {
+        console.error(error);
+        alert("Something went wrong");
+      }
+    }
+  };
 
   return (
     <div className="loginPage">
@@ -40,11 +100,15 @@ function LoginPage() {
           }`}
         >
           <label htmlFor="Email address">Email address:</label>
-          <input type="email" id="emailAddress" />
+          <input type="email" id="emailAddressLogin" />
 
           <label htmlFor="password">Password:</label>
-          <input type="password" id="password" />
-          <Button label={"Login"} className={"primary"} onClick={handleClick} />
+          <input type="password" id="passwordLogin" />
+          <Button
+            label={"Login"}
+            className={"primary"}
+            onClick={loginHandler}
+          />
         </form>
 
         <form
@@ -53,13 +117,21 @@ function LoginPage() {
           }`}
         >
           <label htmlFor="Email address">Email address:</label>
-          <input type="email" id="emailAddress" />
+          <input type="email" name="Email address" id="emailAddressSignUp" />
 
           <label htmlFor="password">Password:</label>
-          <input type="password" id="password" />
+          <input type="password" name="password" id="passwordSignUp" />
           <label htmlFor="passwordConfirm">Password Confirm :</label>
-          <input type="password" id="passwordConfirm" />
-          <Button label={"Sign Up"} className={"primary"} onClick={handleClick}/>
+          <input
+            type="password"
+            name="passwordConfirm"
+            id="passwordConfirmSignUp"
+          />
+          <Button
+            label={"Sign Up"}
+            className={"primary"}
+            onClick={signUpHandler}
+          />
         </form>
       </div>
     </div>
