@@ -27,15 +27,13 @@ function LoginPage() {
     } else {
       try {
         const userData = { email, password };
-      dispatch(userLogin(userData));
-
-        // if (response.status === 200) {
-        //   alert("User logged in successfully");
-        //   localStorage.setItem("user", response.data);
-        //   navigate("/home");
-        // } else {
-        //   alert("Something went wrong");
-        // }
+        const response =dispatch(userLogin(userData));
+        if (response) {
+          alert("Login successfully");
+          navigate("/home");
+        } else {
+          alert("Something went wrong");
+        }
       } catch (error) {
         console.error(error);
         alert("Something went wrong");
@@ -65,7 +63,7 @@ function LoginPage() {
 
         if (response.status === 200) {
           alert("User created successfully");
-          navigate("/home");
+          setShow(true);
         } else {
           alert("Something went wrong");
         }
