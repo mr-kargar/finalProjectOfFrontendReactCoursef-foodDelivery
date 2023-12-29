@@ -28,6 +28,12 @@
       padding: 0px 41px 0px 41px;
       margin-bottom: 100px;
       margin-top: 46px;
+
+      &-item{
+        &:hover{
+          cursor: pointer;
+        }
+      }
     }
 
     h3 {
@@ -87,9 +93,12 @@
 .showMenu {
   border: none;
   transform: translate(220px, 0px) scale(0.7);
+ 
 }
 
 .showUl li {
   position: relative;
   
 }
+
+

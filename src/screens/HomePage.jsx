@@ -1,23 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HamburgerMenu from "../components/HamburgerMenu";
 import SearchBar from "../components/SearchBar";
 import FoodView from "../components/FoodView";
 import BottomMenu from "../components/BottomMenu";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { foodFetch } from "../redux/foodSlice";
 
 function HomePage() {
-const [show , setShow] = useState(false);
+  const types = ["foods", "drinks", "snacks", "sauces", "salads"];
+  const [show, setShow] = useState(false);
 
-function showMenu(){
-  setShow(!show);
-}
+  function showMenu() {
+    setShow(!show);
+  }
+
+  const token = localStorage.getItem("token");
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+   showFoodByType(token, "foods");
+  }, []);
+
+  const showFoodByType = (token, type) => {
+    const data = { token, type };
+    dispatch(foodFetch(data));
+  };
+
+  
+
+  const foodList = useSelector((state) => state.food);
+
+  console.log(foodList);
 
   return (
     <>
-      <div className={`homePage ${show ? 'showMenu' : null}`} >
+      <div className={`homePage ${show ? "showMenu" : null}`}>
         <div className="homePage-header">
-          <HamburgerMenu showMenu={showMenu}/>
+          <HamburgerMenu showMenu={showMenu} />
           <svg
             width="24"
             height="24"
@@ -54,17 +76,26 @@ function showMenu(){
           <h1 className="homePage-content-title">Delicious food for you</h1>
           <SearchBar />
           <div className="homePage-content-filter">
-            <div className="homePage-content-filter-item">All</div>
-            <div className="homePage-content-filter-item">Burgers</div>
-            <div className="homePage-content-filter-item">Pizza</div>
-            <div className="homePage-content-filter-item">Sushi</div>
-            <div className="homePage-content-filter-item">Salads</div>
+            {types.map((type) => {
+              return (
+                <div
+                  className="homePage-content-filter-item"
+                  onClick={() => showFoodByType(token, type)}
+                >
+                  {type}
+                </div>
+              );
+            })}
           </div>
-          <h3>see more</h3>
+
           <div className="homePage-content-food">
-            <FoodView />
-            <FoodView />
-            <FoodView />
+            {foodList.loading ? (
+              <h1>is loadin...</h1>
+            ) : (
+              foodList.foods.data.map((food) => {
+                return <FoodView food={food} />;
+              })
+            )}
           </div>
         </div>
 
@@ -72,7 +103,7 @@ function showMenu(){
       </div>
 
       <div className="mainMenu" onClick={showMenu}>
-        <ul className={`mainMenu-list ${show ? 'showUl' : null}`}>
+        <ul className={`mainMenu-list ${show ? "showUl" : null}`}>
           <li>
             <svg
               width="24"
@@ -94,7 +125,9 @@ function showMenu(){
                 fill="white"
               />
             </svg>
-            <span><Link to='../profile'>Profile</Link></span>
+            <span>
+              <Link to="../profile">Profile</Link>
+            </span>
           </li>
           <li>
             <svg
@@ -110,7 +143,9 @@ function showMenu(){
               />
             </svg>
 
-            <span><Link to='../order'>orders</Link></span>
+            <span>
+              <Link to="../order">orders</Link>
+            </span>
           </li>
           <li>
             <svg
@@ -130,7 +165,9 @@ function showMenu(){
               />
             </svg>
 
-            <span><Link to='../offer'>offer and promo</Link></span>
+            <span>
+              <Link to="../offer">offer and promo</Link>
+            </span>
           </li>
           <li>
             <svg
@@ -146,7 +183,9 @@ function showMenu(){
               />
             </svg>
 
-            <span><Link to='#'>Privacy policy</Link></span>
+            <span>
+              <Link to="#">Privacy policy</Link>
+            </span>
           </li>
           <li>
             <svg
@@ -169,7 +208,9 @@ function showMenu(){
               </defs>
             </svg>
 
-            <span><Link to='#'>Security</Link></span>
+            <span>
+              <Link to="#">Security</Link>
+            </span>
           </li>
         </ul>
         <div className="mainMenu-signOut">
