@@ -1,6 +1,5 @@
 import {
   createSlice,
-  asyncThunkCreator,
   createAsyncThunk,
 } from "@reduxjs/toolkit";
 import axios from "axios";
@@ -15,7 +14,6 @@ export const foodFetch = createAsyncThunk("food/fetch", async (data) => {
         },
       }
     );
-    console.log(" in slice  " , foodData);
     return foodData.data;
   } catch (error) {
     console.error(error.message);

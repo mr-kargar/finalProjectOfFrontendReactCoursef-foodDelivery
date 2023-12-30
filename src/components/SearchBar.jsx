@@ -1,9 +1,12 @@
 import React from "react";
 
-const SearchBar = () => {
+
+const SearchBar = (props) => {
+
+
   return (
     <div className="searchBar">
-      <input type="text" placeholder="Search" />
+      <input type="text" placeholder="Search"  onKeyPress={props.onKeyPress}/>
       <svg
         className="searchBarIcon"
         width="20"

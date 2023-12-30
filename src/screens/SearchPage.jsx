@@ -1,7 +1,17 @@
 import React from "react";
+import { useSelector } from "react-redux";  
+import { useParams } from "react-router-dom"; 
+
 
 function SearchPage() {
+const {name} = useParams();
+console.log(name);
+  const  search  = useSelector((state) => state.search);
+  console.log(search.search);
   return (
+    <>
+
+    {(search.search.total === 0) ?
     <div className="searchPage">
         <div className="header">
         <svg
@@ -20,7 +30,7 @@ function SearchPage() {
           />
         </svg>
 
-        <h3>Spicy chieckns</h3>
+        <h3>{name}</h3>
       </div>
 
       <div className="content">
@@ -51,6 +61,8 @@ function SearchPage() {
       <p>Try searching the item with a different keyword.</p>
       </div>
     </div>
+: <h1>hello</h1>  }
+    </>
   );
 }
 

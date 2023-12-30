@@ -6,6 +6,7 @@ import MyProfilePage from "./screens/MyProfilePage";
 import HistoryPage from "./screens/HistoryPage";
 import OrdersPage from "./screens/OrdersPage";
 import OfferAndPromoPage from "./screens/OfferAndPromoPage";
+import SearchPage from "./screens/SearchPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
@@ -20,6 +21,7 @@ function App() {
       <Route path="/history" element={<HistoryPage />} />
       <Route path="/order" element={<OrdersPage />} />
       <Route path="/offer" element={<OfferAndPromoPage />} />
+      <Route path="/search/:name" element={<SearchPage />} />
     </Routes>
     </BrowserRouter>
     

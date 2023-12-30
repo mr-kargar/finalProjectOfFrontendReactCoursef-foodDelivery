@@ -7,8 +7,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { foodFetch } from "../redux/foodSlice";
+import { searchFetch } from "../redux/searchSlice";
+import { useNavigate } from "react-router-dom"; 
 
 function HomePage() {
+
+  const navigate = useNavigate();
+
   const types = ["foods", "drinks", "snacks", "sauces", "salads"];
   const [show, setShow] = useState(false);
 
@@ -21,7 +26,7 @@ function HomePage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-   showFoodByType(token, "foods");
+    showFoodByType(token, "foods");
   }, []);
 
   const showFoodByType = (token, type) => {
@@ -29,12 +34,19 @@ function HomePage() {
     dispatch(foodFetch(data));
   };
 
-  
-
   const foodList = useSelector((state) => state.food);
 
-  console.log(foodList);
+  const handelSearch = (e) => {
+    console.log(e);
+    if (e.key === "Enter") {
+      const data = { token: token, name: e.target.value };
+      dispatch(searchFetch(data));
+navigate(`/search/${e.target.value}`);
+    }
+  };
 
+  const foodSearch = useSelector((state) => state.search);
+console.log(foodSearch);
   return (
     <>
       <div className={`homePage ${show ? "showMenu" : null}`}>
@@ -74,7 +86,7 @@ function HomePage() {
         </div>
         <div className="homePage-content">
           <h1 className="homePage-content-title">Delicious food for you</h1>
-          <SearchBar />
+          <SearchBar onKeyPress={handelSearch} />
           <div className="homePage-content-filter">
             {types.map((type) => {
               return (
