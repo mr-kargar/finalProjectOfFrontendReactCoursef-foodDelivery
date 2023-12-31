@@ -4,6 +4,7 @@
   background-color: $color-white;
   border-radius: 20px;
   margin: 10px;
+  position: relative;
 
   &-image {
     width: 70px;
@@ -15,6 +16,7 @@
     flex-direction: column;
     margin-left: 10px;
     margin-top: 10px;
+    gap: 15px;
 
     &-name {
       font-size: 1.07rem;
@@ -23,20 +25,27 @@
 
     &-price {
       font-size: 0.93rem;
-      font-weight: 400;
+      font-weight: 600;
       color: $color-primary;
     }
   }
 
-  &-qty{
+  &-qty {
     width: 52px;
     height: 20px;
     background-color: $color-primary;
     color: $color-white;
     border: none;
     border-radius: 20px;
-&:focus{
-    border: none;
-}
+    position: absolute;
+    right: 24px;
+    bottom: 17px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.93rem;
+
+    &:focus {
+      border: none;
+    }
   }
 }

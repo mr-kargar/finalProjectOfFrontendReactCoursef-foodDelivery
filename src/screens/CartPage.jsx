@@ -1,5 +1,6 @@
 import React from "react";
 import FoodInCart from "../components/FoodInCart";
+import Button from "../components/Button";
 
 function CartPage() {
   return (
@@ -22,10 +23,12 @@ function CartPage() {
         </svg>
 
         <h3>Cart</h3>
-        <div>
+        
+      </div>
+      <div>
           <FoodInCart />
         </div>
-      </div>
+        <Button label={"Complete order"} className={"primary"} />
     </div>
   );
 }
