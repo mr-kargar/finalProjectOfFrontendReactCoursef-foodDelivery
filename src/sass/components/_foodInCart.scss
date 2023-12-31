@@ -1,0 +1,42 @@
+.foodInCart {
+  display: flex;
+  padding: 17px;
+  background-color: $color-white;
+  border-radius: 20px;
+  margin: 10px;
+
+  &-image {
+    width: 70px;
+    height: 70px;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-top: 10px;
+
+    &-name {
+      font-size: 1.07rem;
+      font-weight: 600;
+    }
+
+    &-price {
+      font-size: 0.93rem;
+      font-weight: 400;
+      color: $color-primary;
+    }
+  }
+
+  &-qty{
+    width: 52px;
+    height: 20px;
+    background-color: $color-primary;
+    color: $color-white;
+    border: none;
+    border-radius: 20px;
+&:focus{
+    border: none;
+}
+  }
+}

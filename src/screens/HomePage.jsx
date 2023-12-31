@@ -105,7 +105,7 @@ console.log(foodSearch);
               <h1>is loadin...</h1>
             ) : (
               foodList.foods.data.map((food) => {
-                return <FoodView food={food} />;
+                return <Link to={`../foodDetails/${food.name}`}><FoodView food={food}/></Link> ;
               })
             )}
           </div>
