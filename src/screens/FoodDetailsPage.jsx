@@ -1,20 +1,32 @@
-import React from 'react'
-import Button from '../components/Button'
-import { useParams } from 'react-router-dom';
-import { addItemAction } from '../redux/cartSlice';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from "react";
+import Button from "../components/Button";
+import { useParams } from "react-router-dom";
+import { addItemAction } from "../redux/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { foodDetailsFetch } from "../redux/foodDetailsSlice";
 
 function FoodDetailsPage() {
-
+  const token = localStorage.getItem("token");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-const {name}  = useParams();
+  const { name } = useParams();
 
-function addToCartHandler(){
-  dispatch(addItemAction(name));
-  navigate('../cart');
-}
+  const food = useSelector((state) => state.foodDetails.foodDetail.data);
+  console.log(food);
+
+  function addToCartHandler() {
+    dispatch(addItemAction(food));
+    navigate("../cart");
+  }
+
+  useEffect(() => {
+    const data = { token, name };
+    dispatch(foodDetailsFetch(data));
+  }, []);
+
+  const foodDetail = useSelector((state) => state.foodDetails.foodDetail.data);
+  console.log(foodDetail);
 
   return (
     <div className="foodDetailsPage">
@@ -37,10 +49,19 @@ function addToCartHandler(){
 
         <h3>{name}</h3>
       </div>
-    
-    <Button label={'Add to cart'} className={'primary'} onClick={addToCartHandler}/>
+      <div className="foodDetailsPage-content">
+        <img src="src/assets/images/Rectangle 6.png" alt="" srcset="" />
+        {/* <h1>{foodDetail[0].name}</h1>
+        <h3>{foodDetail[0].price}</h3> */}
+      </div>
+
+      <Button
+        label={"Add to cart"}
+        className={"primary"}
+        onClick={addToCartHandler}
+      />
     </div>
   );
 }
 
-export default FoodDetailsPage
+export default FoodDetailsPage;

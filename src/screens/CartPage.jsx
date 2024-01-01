@@ -1,8 +1,16 @@
 import React from "react";
 import FoodInCart from "../components/FoodInCart";
 import Button from "../components/Button";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function CartPage() {
+const token = localStorage.getItem("token");
+const dispatch = useDispatch();
+const foodDetail = useSelector((state) => state.foodDetails.foodDetail.data);
+console.log(foodDetail);
+
+
   return (
     <div className="cartPage">
       <div className="header">
@@ -25,7 +33,7 @@ function CartPage() {
         <h3>Cart</h3>
         
       </div>
-      <div>
+      <div className="cartPage-content">
           <FoodInCart />
         </div>
         <Button label={"Complete order"} className={"primary"} />

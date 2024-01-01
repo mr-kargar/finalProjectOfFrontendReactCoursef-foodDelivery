@@ -7,7 +7,7 @@ import axios from "axios";
 export const foodFetch = createAsyncThunk("food/fetch", async (data) => {
   try {
     const foodData = await axios.get(
-      `http://localhost:3000/menu/?type=${data.type}`,
+      `http://localhost:3000/menu?type=${data.type}`,
       {
         headers: {
           auth: data.token,

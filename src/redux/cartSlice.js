@@ -5,8 +5,10 @@ const cartSlice = createSlice({
     initialState: [],
     reducers: {
         addItem: (state, action) => {
+
             const item = action.payload;
-            const existItem = state.find(x => x === item);
+            console.log(item);
+            const existItem = state.find(x => x._id === item._id);
             console.log(existItem);
             if (existItem) {
                 state.map(x => x === existItem ? item : x);
