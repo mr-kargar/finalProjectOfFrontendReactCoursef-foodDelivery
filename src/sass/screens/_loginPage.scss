@@ -4,6 +4,7 @@
     $border-color: $color-dark,
     $percent: 1%
   );
+  ;
 
   &-content {
     &-topContainer {
@@ -46,6 +47,7 @@
       flex-direction: column;
       padding: 0 50px;
       margin-bottom: 190px;
+      
 
       :first-child {
         margin-top: 64px;

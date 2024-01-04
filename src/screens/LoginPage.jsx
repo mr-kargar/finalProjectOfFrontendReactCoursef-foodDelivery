@@ -5,8 +5,17 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../redux/userSlice";
+import Alert from "../components/Alert";
 
 function LoginPage() {
+  const [alertAllField, setAlertAllField] = useState(false);
+  const [alertLogin, setAlertLogin] = useState(false);
+  const [alertLoginSuccess, setAlertLoginSuccess] = useState(false);
+
+  const [alertConfirmPassword, setAlertConfirmPassword] = useState(false);
+  const [alertSignUp, setAlertSignUp] = useState(false);
+  const [alertSignUpSuccess, setAlertSignUpSuccess] = useState(false);
+
   const [show, setShow] = useState(true);
 
   function showForm() {
@@ -22,21 +31,32 @@ function LoginPage() {
     const email = document.getElementById("emailAddressLogin").value;
     const password = document.getElementById("passwordLogin").value;
     if (email === "" || password === "") {
-      alert("Please fill all the fields");
+      setAlertAllField(true);
+      setTimeout(() => {
+        setAlertAllField(false);
+      }, "2000");
       return;
     } else {
       try {
         const userData = { email, password };
-        const response =dispatch(userLogin(userData));
+        const response = dispatch(userLogin(userData));
+        console.log(response);
         if (response) {
-          alert("Login successfully");
-          navigate("/home");
+          setAlertLoginSuccess(true);
+          setTimeout(() => {
+            navigate("/home");
+          }, "2000");
         } else {
-          alert("Something went wrong");
+          setAlertLogin(true);
+          setTimeout(() => {
+            setAlertLogin(false);
+          }, "2000");
         }
       } catch (error) {
-        console.error(error);
-        alert("Something went wrong");
+        setAlertLogin(true);
+        setTimeout(() => {
+          setAlertLogin(false);
+        }, "2000");
       }
     }
   };
@@ -49,10 +69,17 @@ function LoginPage() {
       "passwordConfirmSignUp"
     ).value;
     if (email === "" || password === "" || passwordConfirm === "") {
-      alert("Please fill all the fields");
+      setAlertAllField(true);
+      setTimeout(() => {
+        setAlertAllField(false);
+      }, "2000");
       return;
     } else if (password !== passwordConfirm) {
-      alert("Password and Confirm Password should be same");
+      setAlertConfirmPassword(true);
+      setTimeout(() => {
+        setAlertConfirmPassword(false);
+      }, "2000");
+
       return;
     } else {
       try {
@@ -62,14 +89,22 @@ function LoginPage() {
         });
 
         if (response.status === 200) {
-          alert("User created successfully");
-          setShow(true);
+          setAlertSignUpSuccess(true);
+          setTimeout(() => {
+            setAlertSignUpSuccess(false);
+            setShow(true);
+          }, "2000");
         } else {
-          alert("Something went wrong");
+          setAlertSignUp(true);
+          setTimeout(() => {
+            setAlertSignUp(false);
+          }, "2000");
         }
       } catch (error) {
-        console.error(error);
-        alert("Something went wrong");
+        setAlertSignUp(true);
+        setTimeout(() => {
+          setAlertSignUp(false);
+        }, "2000");
       }
     }
   };
@@ -107,8 +142,20 @@ function LoginPage() {
             className={"primary"}
             onClick={loginHandler}
           />
-        </form>
+          <Alert
+            class={`${alertAllField ? "show" : null} alert-error`}
+            message={"Please fill all the fields"}
+          />
 
+          <Alert
+            class={`${alertLogin ? "show" : null} alert-error`}
+            message={"Something went wrong : check your Email and password"}
+          />
+          <Alert
+            class={`${alertLoginSuccess ? "show" : null} alert-success`}
+            message={"Login successfully"}
+          />
+        </form>
         <form
           className={`loginPage-content-formContainer signUpMargin ${
             show ? null : "show"
@@ -129,6 +176,24 @@ function LoginPage() {
             label={"Sign Up"}
             className={"primary"}
             onClick={signUpHandler}
+          />
+          <Alert
+            class={`${alertAllField ? "show" : null} alert-error`}
+            message={"Please fill all the fields"}
+          />
+
+          <Alert
+            class={`${alertConfirmPassword ? "show" : null} alert-error`}
+            message={"Password and Confirm Password should be same"}
+          />
+
+          <Alert
+            class={`${alertSignUp ? "show" : null} alert-error`}
+            message={"Something went wrong"}
+          />
+          <Alert
+            class={`${alertSignUpSuccess ? "show" : null} alert-success`}
+            message={"User created successfully"}
           />
         </form>
       </div>
