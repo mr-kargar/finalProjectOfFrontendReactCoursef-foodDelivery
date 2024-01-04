@@ -7,11 +7,10 @@ export const userLogin = createAsyncThunk("user/login", async (userData) => {
       "http://localhost:3000/sign-in",
       userData
     );
-    console.log(response.data);
     localStorage.setItem("token", response.data.token);
     return response.data;
   } catch (error) {
-    throw error;
+    return error.response.data;
   }
 });
 

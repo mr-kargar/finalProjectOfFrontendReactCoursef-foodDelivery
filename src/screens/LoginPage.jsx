@@ -6,8 +6,15 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../redux/userSlice";
 import Alert from "../components/Alert";
+import { useSelector } from "react-redux";
 
 function LoginPage() {
+  const [emailLogin, setEmailLogin] = useState("");
+  const [passwordLogin, setPasswordLogin] = useState("");
+  const [emailSignUp, setEmailSignUp] = useState("");
+  const [passwordSignUp, setPasswordSignUp] = useState("");
+  const [passwordConfirmSignUp, setPasswordConfirmSignUp] = useState("");
+
   const [alertAllField, setAlertAllField] = useState(false);
   const [alertLogin, setAlertLogin] = useState(false);
   const [alertLoginSuccess, setAlertLoginSuccess] = useState(false);
@@ -20,11 +27,17 @@ function LoginPage() {
 
   function showForm() {
     setShow(!show);
+    setEmailLogin("");
+    setPasswordLogin("");
+    setEmailSignUp("");
+    setPasswordSignUp("");
+    setPasswordConfirmSignUp("");
   }
 
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
+  const user = useSelector((state) => state.user);
 
   const loginHandler = async (e) => {
     e.preventDefault();
@@ -37,11 +50,9 @@ function LoginPage() {
       }, "2000");
       return;
     } else {
-      try {
-        const userData = { email, password };
-        const response = dispatch(userLogin(userData));
-        console.log(response);
-        if (response) {
+      const userData = { email, password };
+      dispatch(userLogin(userData)).then((data) => {
+        if (data.payload.token) {
           setAlertLoginSuccess(true);
           setTimeout(() => {
             navigate("/home");
@@ -52,29 +63,24 @@ function LoginPage() {
             setAlertLogin(false);
           }, "2000");
         }
-      } catch (error) {
-        setAlertLogin(true);
-        setTimeout(() => {
-          setAlertLogin(false);
-        }, "2000");
-      }
+      });
     }
   };
 
   const signUpHandler = async (e) => {
     e.preventDefault();
-    const email = document.getElementById("emailAddressSignUp").value;
-    const password = document.getElementById("passwordSignUp").value;
-    const passwordConfirm = document.getElementById(
-      "passwordConfirmSignUp"
-    ).value;
-    if (email === "" || password === "" || passwordConfirm === "") {
+
+    if (
+      emailSignUp === "" ||
+      passwordSignUp === "" ||
+      passwordConfirmSignUp === ""
+    ) {
       setAlertAllField(true);
       setTimeout(() => {
         setAlertAllField(false);
       }, "2000");
       return;
-    } else if (password !== passwordConfirm) {
+    } else if (passwordSignUp !== passwordConfirmSignUp) {
       setAlertConfirmPassword(true);
       setTimeout(() => {
         setAlertConfirmPassword(false);
@@ -82,10 +88,11 @@ function LoginPage() {
 
       return;
     } else {
+      console.log(emailSignUp, passwordSignUp);
       try {
         const response = await axios.post("http://localhost:3000/sign-up", {
-          email,
-          password,
+          email: emailSignUp,
+          password: passwordSignUp,
         });
 
         if (response.status === 200) {
@@ -93,6 +100,9 @@ function LoginPage() {
           setTimeout(() => {
             setAlertSignUpSuccess(false);
             setShow(true);
+            setEmailSignUp("");
+            setPasswordSignUp("");
+            setPasswordConfirmSignUp("");
           }, "2000");
         } else {
           setAlertSignUp(true);
@@ -133,10 +143,22 @@ function LoginPage() {
           }`}
         >
           <label htmlFor="Email address">Email address:</label>
-          <input type="email" id="emailAddressLogin" />
+          <input
+            type="email"
+            id="emailAddressLogin"
+            autoComplete="off"
+            onChange={(e) => setEmailLogin(e.target.value)}
+            value={emailLogin}
+          />
 
           <label htmlFor="password">Password:</label>
-          <input type="password" id="passwordLogin" />
+          <input
+            type="password"
+            id="passwordLogin"
+            autoComplete="off"
+            onChange={(e) => setPasswordLogin(e.target.value)}
+            value={passwordLogin}
+          />
           <Button
             label={"Login"}
             className={"primary"}
@@ -162,15 +184,32 @@ function LoginPage() {
           }`}
         >
           <label htmlFor="Email address">Email address:</label>
-          <input type="email" name="Email address" id="emailAddressSignUp" />
+          <input
+            type="email"
+            name="Email address"
+            id="emailAddressSignUp"
+            onChange={(e) => setEmailSignUp(e.target.value)}
+            value={emailSignUp}
+            autoComplete="off"
+          />
 
           <label htmlFor="password">Password:</label>
-          <input type="password" name="password" id="passwordSignUp" />
+          <input
+            type="password"
+            name="password"
+            id="passwordSignUp"
+            onChange={(e) => setPasswordSignUp(e.target.value)}
+            value={passwordSignUp}
+            autoComplete="off"
+          />
           <label htmlFor="passwordConfirm">Password Confirm :</label>
           <input
             type="password"
             name="passwordConfirm"
             id="passwordConfirmSignUp"
+            onChange={(e) => setPasswordConfirmSignUp(e.target.value)}
+            value={passwordConfirmSignUp}
+            autoComplete="off"
           />
           <Button
             label={"Sign Up"}
@@ -193,7 +232,7 @@ function LoginPage() {
           />
           <Alert
             class={`${alertSignUpSuccess ? "show" : null} alert-success`}
-            message={"User created successfully"}
+            message={"User created successfully , please login"}
           />
         </form>
       </div>
