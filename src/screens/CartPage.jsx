@@ -3,13 +3,34 @@ import FoodInCart from "../components/FoodInCart";
 import Button from "../components/Button";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { submitOrder } from "../redux/orderSlice";
 
 function CartPage() {
-const token = localStorage.getItem("token");
-const dispatch = useDispatch();
-const foodDetail = useSelector((state) => state.foodDetails.foodDetail.data);
-console.log(foodDetail);
+  const token = localStorage.getItem("token");
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart);
+  const navigate = useNavigate();
 
+  function handleCompleteOrder() {
+    const orderItem = cartItems.map((item) => {
+      return { menuItemId: item._id, quantity: item.quantity };
+    });
+
+    const order = { token: token, orderItems: orderItem };
+    console.log(order);
+    const response = dispatch(submitOrder({order})).then(() => {
+      const totalItem = cartItems.map((item) => {
+        return item.price * item.quantity;
+      });
+      let totalSum = 0;
+      totalItem.forEach((item) => {
+        totalSum += item;
+      });
+
+      navigate(`./payment/${totalSum}`);
+    });
+  }
 
   return (
     <div className="cartPage">
@@ -31,12 +52,22 @@ console.log(foodDetail);
         </svg>
 
         <h3>Cart</h3>
-        
       </div>
-      <div className="cartPage-content">
-          <FoodInCart />
+      {localStorage.getItem("cart") ? (
+        <div className="cartPage-content">
+          {cartItems.map((item) => {
+            return <FoodInCart key={item._id} item={item} />;
+          })}
         </div>
-        <Button label={"Complete order"} className={"primary"} />
+      ) : (
+        <h1>Cart is empty</h1>
+      )}
+
+      <Button
+        label={"Complete order"}
+        className={"primary "}
+        onClick={handleCompleteOrder}
+      />
     </div>
   );
 }

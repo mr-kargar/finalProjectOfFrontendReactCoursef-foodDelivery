@@ -31,23 +31,26 @@
       color: $color-primary;
     }
   }
-
-  &-qty {
-    width: 52px;
-    height: 20px;
-    background-color: $color-primary;
-    color: $color-white;
-    border: none;
-    border-radius: 20px;
+  &-quantity {
+    display: flex;
     position: absolute;
     right: 24px;
     bottom: 17px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 0.93rem;
-
-    &:focus {
+    gap: 10px;
+    &-qty {
+      width: 52px;
+      height: 20px;
+      background-color: $color-primary;
+      color: $color-white;
       border: none;
+      border-radius: 20px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.93rem;
+
+      &:focus {
+        border: none;
+      }
     }
   }
 }

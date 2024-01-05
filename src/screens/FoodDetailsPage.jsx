@@ -12,21 +12,19 @@ function FoodDetailsPage() {
   const navigate = useNavigate();
   const { name } = useParams();
 
-  const food = useSelector((state) => state.foodDetails.foodDetail.data);
-  console.log(food);
+  const foodDetails = useSelector((state) => state.food.foods.data);
+  const foodDetail = foodDetails.filter((food) => food.name === name);
 
   function addToCartHandler() {
-    dispatch(addItemAction(food));
+    dispatch(addItemAction(foodDetail[0]));
     navigate("../cart");
   }
 
-  useEffect(() => {
-    const data = { token, name };
-    dispatch(foodDetailsFetch(data));
-  }, []);
-
-  const foodDetail = useSelector((state) => state.foodDetails.foodDetail.data);
-  console.log(foodDetail);
+  // useEffect(() => { 
+  //   const data = { token: token ,name: name };
+  //   dispatch(foodDetailsFetch(data));
+  // }, []);
+  
 
   return (
     <div className="foodDetailsPage">
@@ -51,8 +49,8 @@ function FoodDetailsPage() {
       </div>
       <div className="foodDetailsPage-content">
         <img src="src/assets/images/Rectangle 6.png" alt="" srcset="" />
-        {/* <h1>{foodDetail[0].name}</h1>
-        <h3>{foodDetail[0].price}</h3> */}
+        <h1>{foodDetail[0].name}</h1>
+        <h3>{foodDetail[0].price}</h3>
       </div>
 
       <Button

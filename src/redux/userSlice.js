@@ -18,7 +18,7 @@ const userSlice = createSlice({
   name: "user",
   initialState: {
     loading: true,
-    user: null,
+    user: localStorage.getItem("token") ? localStorage.getItem("token") : null,
     error: null,
   },
   reducers: {},

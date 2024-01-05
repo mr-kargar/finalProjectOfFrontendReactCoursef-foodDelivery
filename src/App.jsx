@@ -8,6 +8,7 @@ import OrdersPage from "./screens/OrdersPage";
 import OfferAndPromoPage from "./screens/OfferAndPromoPage";
 import SearchPage from "./screens/SearchPage";
 import FoodDetailsPage from "./screens/FoodDetailsPage";
+import CheckoutPage from "./screens/CheckoutPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CartPage from "./screens/CartPage";
 
@@ -26,6 +27,7 @@ function App() {
       <Route path="/search/:name" element={<SearchPage />} />
       <Route path="/foodDetails/:name" element={<FoodDetailsPage />} />
       <Route path="/cart" element={<CartPage />} />
+      <Route path="/cart/payment/:totalSum" element={<CheckoutPage />} />
     </Routes>
     </BrowserRouter>
     
