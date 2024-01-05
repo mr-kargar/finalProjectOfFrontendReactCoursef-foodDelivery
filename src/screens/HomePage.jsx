@@ -39,8 +39,10 @@ function HomePage() {
     console.log(e);
     if (e.key === "Enter") {
       const data = { token: token, name: e.target.value };
-      dispatch(searchFetch(data));
-      navigate(`/search/${e.target.value}`);
+      dispatch(searchFetch(data)).then(() => {
+        navigate(`/search/${e.target.value}`);
+      })
+      
     }
   };
 
