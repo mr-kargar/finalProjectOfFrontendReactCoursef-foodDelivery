@@ -22,6 +22,12 @@ function LoginPage() {
   const [alertConfirmPassword, setAlertConfirmPassword] = useState(false);
   const [alertSignUp, setAlertSignUp] = useState(false);
   const [alertSignUpSuccess, setAlertSignUpSuccess] = useState(false);
+  const [alertPasswordFormat, setAlertPasswordFormat] = useState(false);
+
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
 
   const [show, setShow] = useState(true);
 
@@ -73,7 +79,8 @@ function LoginPage() {
     if (
       emailSignUp === "" ||
       passwordSignUp === "" ||
-      passwordConfirmSignUp === ""
+      passwordConfirmSignUp === "" ||
+      !validateEmail(emailSignUp)
     ) {
       setAlertAllField(true);
       setTimeout(() => {
@@ -86,6 +93,12 @@ function LoginPage() {
         setAlertConfirmPassword(false);
       }, "2000");
 
+      return;
+    } else if (passwordSignUp.length < 6 || passwordSignUp.includes(" ")) {
+      setAlertPasswordFormat(true);
+      setTimeout(() => {
+        setAlertPasswordFormat(false);
+      }, "2000");
       return;
     } else {
       console.log(emailSignUp, passwordSignUp);
@@ -218,7 +231,7 @@ function LoginPage() {
           />
           <Alert
             class={`${alertAllField ? "show" : null} alert-error`}
-            message={"Please fill all the fields"}
+            message={"Please fill all the fields OR check your email"}
           />
 
           <Alert
@@ -233,6 +246,13 @@ function LoginPage() {
           <Alert
             class={`${alertSignUpSuccess ? "show" : null} alert-success`}
             message={"User created successfully , please login"}
+          />
+
+          <Alert
+            class={`${alertPasswordFormat ? "show" : null} alert-error`}
+            message={
+              "please enter a valid password format with at least 6 characters and without space"
+            }
           />
         </form>
       </div>
