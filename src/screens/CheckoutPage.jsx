@@ -8,25 +8,27 @@ import { useNavigate } from "react-router-dom";
 import { submitPayment } from "../redux/paymentSlice";
 
 function CheckoutPage() {
-const {totalSum} = useParams();
-const [message , setMessage] = useState("");
+  const { totalSum } = useParams();
+  const [message, setMessage] = useState("");
 
-const token = localStorage.getItem("token");
-const orderId = useSelector((state) => state.order.order.data._id);
+  const token = localStorage.getItem("token");
+  const orderId = useSelector((state) => state.order.order.data._id);
+ 
 
-const navigate = useNavigate();
-const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-function handlePayment() {
- dispatch(submitPayment({ token, orderId })).then((res) => {
-if(res.payload){
-  setMessage(`Payment ${res.payload.data.status}`);
-  setTimeout(() => {
-    navigate("/home");
-  }, "5000");
-}
- });
-}
+  function handlePayment() {
+    dispatch(submitPayment({ token, orderId })).then((res) => {
+      if (res.payload) {
+        setMessage(`Payment ${res.payload.data.status}`);
+        setTimeout(() => {
+
+          navigate("/home");
+        }, "5000");
+      }
+    });
+  }
 
   return (
     <div className="checkoutPage">
@@ -49,9 +51,11 @@ if(res.payload){
 
         <h3>Payment</h3>
       </div>
-      
+      <div className="checkoutPage-content">
         <h2>Total: {totalSum}</h2>
         <p>{message}</p>
+      </div>
+
       <Button label={"Payment"} className={"primary"} onClick={handlePayment} />
     </div>
   );
