@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { foodFetch } from "../redux/foodSlice";
 import { searchFetch } from "../redux/searchSlice";
 import { useNavigate } from "react-router-dom";
+import Badge from "../components/Badge";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -41,49 +42,69 @@ function HomePage() {
       const data = { token: token, name: e.target.value };
       dispatch(searchFetch(data)).then(() => {
         navigate(`/search/${e.target.value}`);
-      })
-      
+      });
     }
   };
 
   const foodSearch = useSelector((state) => state.search);
+  const cart = useSelector((state) => state.cart);
+  console.log(cart);
+  let sumQuantity = 0;
+  const quantity =
+    cart.length != 0 
+      ? cart.map((item) => {
+          return sumQuantity += parseInt(item.quantity) ;
+        })
+      : 0 ;
+
+      console.log(quantity);
+  function cartShow() {
+    if (cart != []) {
+      navigate("../cart");
+    }
+  }
 
   return (
     <>
       <div className={`homePage ${show ? "showMenu" : null}`}>
         <div className="homePage-header">
           <HamburgerMenu showMenu={showMenu} />
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g opacity="0.3">
-              <path
-                d="M9 22C9.55228 22 10 21.5523 10 21C10 20.4477 9.55228 20 9 20C8.44772 20 8 20.4477 8 21C8 21.5523 8.44772 22 9 22Z"
-                stroke="black"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M20 22C20.5523 22 21 21.5523 21 21C21 20.4477 20.5523 20 20 20C19.4477 20 19 20.4477 19 21C19 21.5523 19.4477 22 20 22Z"
-                stroke="black"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6"
-                stroke="black"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </g>
-          </svg>
+          <div className="cartShop">
+            <svg
+              onClick={cartShow}
+              className="cartShop"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g opacity="0.3">
+                <path
+                  d="M9 22C9.55228 22 10 21.5523 10 21C10 20.4477 9.55228 20 9 20C8.44772 20 8 20.4477 8 21C8 21.5523 8.44772 22 9 22Z"
+                  stroke="black"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M20 22C20.5523 22 21 21.5523 21 21C21 20.4477 20.5523 20 20 20C19.4477 20 19 20.4477 19 21C19 21.5523 19.4477 22 20 22Z"
+                  stroke="black"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6"
+                  stroke="black"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </g>
+            </svg>
+            <Badge quantity={quantity} />
+          </div>
         </div>
         <div className="homePage-content">
           <h1 className="homePage-content-title">Delicious food for you</h1>
@@ -107,7 +128,10 @@ function HomePage() {
             ) : (
               foodList.foods.data.map((food) => {
                 return (
-                  <Link to={`../foodDetails/${food.name}`} className={'linkStyle'}>
+                  <Link
+                    to={`../foodDetails/${food.name}`}
+                    className={"linkStyle"}
+                  >
                     <FoodView food={food} />
                   </Link>
                 );
@@ -143,7 +167,9 @@ function HomePage() {
               />
             </svg>
             <span>
-              <Link to="../profile" className={'linkStyleLi'}>Profile</Link>
+              <Link to="../profile" className={"linkStyleLi"}>
+                Profile
+              </Link>
             </span>
           </li>
           <li>
@@ -161,7 +187,9 @@ function HomePage() {
             </svg>
 
             <span>
-              <Link to="../order" className={'linkStyleLi'}>orders</Link>
+              <Link to="../order" className={"linkStyleLi"}>
+                orders
+              </Link>
             </span>
           </li>
           <li>
@@ -183,7 +211,9 @@ function HomePage() {
             </svg>
 
             <span>
-              <Link to="../offer" className={'linkStyleLi'}>offer and promo</Link>
+              <Link to="../offer" className={"linkStyleLi"}>
+                offer and promo
+              </Link>
             </span>
           </li>
           <li>
@@ -201,7 +231,9 @@ function HomePage() {
             </svg>
 
             <span>
-              <Link to="#" className={'linkStyleLi'}>Privacy policy</Link>
+              <Link to="#" className={"linkStyleLi"}>
+                Privacy policy
+              </Link>
             </span>
           </li>
           <li>
@@ -226,7 +258,9 @@ function HomePage() {
             </svg>
 
             <span>
-              <Link to="#" className={'linkStyleLi'}>Security</Link>
+              <Link to="#" className={"linkStyleLi"}>
+                Security
+              </Link>
             </span>
           </li>
         </ul>

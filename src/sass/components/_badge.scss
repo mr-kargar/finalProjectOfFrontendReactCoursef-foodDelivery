@@ -1,0 +1,15 @@
+.badge{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    padding: 1px;
+    background-color: $color_primary;
+    color :$color-white;
+    position: absolute;
+    top :-5px;
+    right: -5px;
+display: flex;
+justify-content: center;
+align-items: center;  
+font-size: 0.8rem;  
+}
