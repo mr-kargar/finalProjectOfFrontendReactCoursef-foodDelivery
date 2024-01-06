@@ -37,8 +37,9 @@ function HomePage() {
   const foodList = useSelector((state) => state.food);
 
   const handelSearch = (e) => {
-    console.log(e);
-    if (e.key === "Enter") {
+   
+    if (e.key === "Enter" && e.target.value !="") {
+      
       const data = { token: token, name: e.target.value };
       dispatch(searchFetch(data)).then(() => {
         navigate(`/search/${e.target.value}`);
@@ -48,16 +49,15 @@ function HomePage() {
 
   const foodSearch = useSelector((state) => state.search);
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
+
   let sumQuantity = 0;
   const quantity =
-    cart.length != 0 
+    cart.length != 0
       ? cart.map((item) => {
-          return sumQuantity += parseInt(item.quantity) ;
+          return (sumQuantity += parseInt(item.quantity));
         })
-      : 0 ;
+      : 0;
 
-      console.log(quantity);
   function cartShow() {
     if (cart != []) {
       navigate("../cart");
