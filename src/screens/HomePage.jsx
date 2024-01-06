@@ -72,7 +72,6 @@ function HomePage() {
           <div className="cartShop">
             <svg
               onClick={cartShow}
-              className="cartShop"
               width="24"
               height="24"
               viewBox="0 0 24 24"

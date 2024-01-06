@@ -15,6 +15,10 @@
 
     .cartShop{
       position: relative;
+
+      &:hover{
+        cursor: pointer;
+      }
     }
   }
 
