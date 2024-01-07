@@ -100,6 +100,10 @@
     font-size: 1.06rem;
     bottom: 87px;
     position: absolute;
+
+    &:hover {
+      cursor: pointer;
+    } 
   }
 }
 

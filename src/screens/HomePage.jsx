@@ -10,6 +10,7 @@ import { foodFetch } from "../redux/foodSlice";
 import { searchFetch } from "../redux/searchSlice";
 import { useNavigate } from "react-router-dom";
 import Badge from "../components/Badge";
+import { userLogoutAction } from "../redux/userSlice";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -62,6 +63,14 @@ function HomePage() {
     if (cart != []) {
       navigate("../cart");
     }
+  }
+
+  function logoutHandler() {
+    dispatch(userLogoutAction());
+    setTimeout(() => {
+      navigate("../");
+    }, 1000);
+    
   }
 
   return (
@@ -264,7 +273,7 @@ function HomePage() {
           </li>
         </ul>
         <div className="mainMenu-signOut">
-          <span>Sign-out</span>
+          <span onClick={logoutHandler}>Sign-out</span>
         </div>
       </div>
     </>
