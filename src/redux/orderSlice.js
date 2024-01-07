@@ -6,8 +6,7 @@ export const submitOrder = createAsyncThunk(
   async (order) => {
     
     const orderTemp = {orderItems: order.order.orderItems};
-    console.log(orderTemp);
-    console.log(order.order.token);
+    
 
     try {
       const response = await axios.post(
@@ -19,7 +18,7 @@ export const submitOrder = createAsyncThunk(
           },
         }
       );
-      console.log(response);
+     
       return response.data;
     } catch (error) {
       console.error(error);

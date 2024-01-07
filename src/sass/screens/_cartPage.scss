@@ -24,9 +24,16 @@
 
 
 &-content{
+  height: 75%;
   display: flex;
   flex-direction: column;
-  margin-top: 96px;
+  margin-top: 50px;
   align-items: center;
+   overflow-y: scroll;
+
+   &::-webkit-scrollbar {
+    
+    display: none;
+}
 }
 }

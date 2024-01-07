@@ -18,7 +18,7 @@ function CartPage() {
     });
 
     const order = { token: token, orderItems: orderItem };
-    console.log(order);
+    
     const response = dispatch(submitOrder({order})).then(() => {
       const totalItem = cartItems.map((item) => {
         return item.price * item.quantity;

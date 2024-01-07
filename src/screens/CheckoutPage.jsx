@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { submitPayment } from "../redux/paymentSlice";
+import { clearCartAction } from "../redux/cartSlice";  
 
 function CheckoutPage() {
   const { totalSum } = useParams();
@@ -22,8 +23,8 @@ function CheckoutPage() {
     dispatch(submitPayment({ token, orderId })).then((res) => {
       if (res.payload) {
         setMessage(`Payment ${res.payload.data.status}`);
+        dispatch(clearCartAction());
         setTimeout(() => {
-
           navigate("/home");
         }, "5000");
       }
