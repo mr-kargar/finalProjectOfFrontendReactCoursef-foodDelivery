@@ -49,7 +49,7 @@ function HistoryPage() {
         </div>
         
       </div>
-      <Button label={"Start Ordering"} className={"primary historyBtn"} onClick={handleStartOrdering}/>
+      <Button label={"Start Ordering"} className={"primary button-bottom"} onClick={handleStartOrdering}/>
     </div>
   );
 }

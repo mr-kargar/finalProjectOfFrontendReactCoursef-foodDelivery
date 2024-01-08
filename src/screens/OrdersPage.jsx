@@ -75,7 +75,7 @@ navigate("/home");
           <p>Hit the orange button down below to Create an order</p>
         </div>
       </div>
-      <Button label={"Start Ordering"} className={"primary historyBtn"} onClick={handleStartOrdering} />
+      <Button label={"Start Ordering"} className={"primary button-bottom"} onClick={handleStartOrdering} />
     </div>
   );
 }

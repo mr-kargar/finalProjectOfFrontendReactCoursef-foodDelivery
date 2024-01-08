@@ -57,7 +57,7 @@ function CheckoutPage() {
         <p>{message}</p>
       </div>
 
-      <Button label={"Payment"} className={"primary"} onClick={handlePayment} />
+      <Button label={"Payment"} className={"primary button-bottom"} onClick={handlePayment} />
     </div>
   );
 }

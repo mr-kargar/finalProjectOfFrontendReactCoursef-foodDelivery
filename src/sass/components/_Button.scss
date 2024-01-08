@@ -2,36 +2,41 @@ button {
   width: 314px;
   height: 70px;
   border: none;
-  border-radius:30px;
+  border-radius: 30px;
   padding: 25px;
   font-size: 1.07rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
- 
 
-&.primary {
+  &.primary {
     background-color: $color-primary;
     color: $color-white;
 
     &:hover {
-        background-color: darken($color-primary, 10%);
-      }
-      &:focus {
-        outline: none;
-      }
-      &:active {
-        transform: scale(0.9);
-      }
-}
+      background-color: darken($color-primary, 10%);
+    }
+    &:focus {
+      outline: none;
+    }
+    &:active {
+      transform: scale(0.9);
+    }
+  }
 
-&.get-started {
+  &.get-started {
     background-color: $color-white;
     color: $color-primary;
     border: 2px solid $color-primary;
-     
-      &:active {
-        transform: scale(0.9);
-      }
-}
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  &.button-bottom {
+    position: absolute;
+    bottom: 44px;
+    left: 50px;
+  }
 }

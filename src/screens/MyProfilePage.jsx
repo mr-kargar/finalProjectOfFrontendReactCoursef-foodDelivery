@@ -55,7 +55,7 @@ function MyProfilePage() {
           </div>
         </div>
 
-        <Button label={"Update"} className={'primary'}/>
+        <Button label={"Update"} className={'primary button-bottom'}/>
       </div>
     </div>
   );

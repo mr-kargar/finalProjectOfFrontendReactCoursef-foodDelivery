@@ -55,7 +55,7 @@ function FoodDetailsPage() {
 
       <Button
         label={"Add to cart"}
-        className={"primary"}
+        className={"primary button-bottom"}
         onClick={addToCartHandler}
       />
     </div>

@@ -18,8 +18,8 @@ function CartPage() {
     });
 
     const order = { token: token, orderItems: orderItem };
-    
-    const response = dispatch(submitOrder({order})).then(() => {
+
+    const response = dispatch(submitOrder({ order })).then(() => {
       const totalItem = cartItems.map((item) => {
         return item.price * item.quantity;
       });
@@ -60,12 +60,14 @@ function CartPage() {
           })}
         </div>
       ) : (
-        <h1>Cart is empty</h1>
+        <div className="cartPage-contentEmpty">
+          <h1>Cart is empty</h1>
+        </div>
       )}
 
       <Button
         label={"Complete order"}
-        className={"primary "}
+        className={"primary button-bottom"}
         onClick={handleCompleteOrder}
       />
     </div>
