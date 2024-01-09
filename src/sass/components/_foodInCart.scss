@@ -32,6 +32,17 @@
       color: $color-primary;
     }
   }
+
+&-clearFoodIcon{
+  position: absolute;
+  right: 24px;
+  top: 17px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
   &-quantity {
     display: flex;
     position: absolute;
