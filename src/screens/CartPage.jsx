@@ -13,6 +13,11 @@ function CartPage() {
   const cartItems = useSelector((state) => state.cart);
   const navigate = useNavigate();
 
+
+  function handelStartOrdering() {
+    navigate("../home");
+  }
+
   function handleCompleteOrder() {
     const orderItem = cartItems.map((item) => {
       return { menuItemId: item._id, quantity: item.quantity };
@@ -97,9 +102,9 @@ function CartPage() {
       )}
 
       <Button
-        label={"Complete order"}
+        label={`${localStorage.getItem("cart") ? "Complete order" : "Start Ordering"}`}
         className={"primary button-bottom"}
-        onClick={handleCompleteOrder}
+        onClick={localStorage.getItem("cart") ? handleCompleteOrder : handelStartOrdering}
       />
     </div>
   );
