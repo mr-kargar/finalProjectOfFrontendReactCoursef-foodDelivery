@@ -35,6 +35,8 @@ function CheckoutPage() {
     <div className="checkoutPage">
       <div className="header">
         <svg
+                onClick={() => navigate(-1)}
+
           width="24"
           height="24"
           viewBox="0 0 24 24"

@@ -6,6 +6,7 @@ function FoodViewPage() {
     <div className="foodViewPage">
       <div className="foodViewPage-header">
         <svg
+          onClick={() => navigate(-1)}
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -38,7 +39,7 @@ function FoodViewPage() {
         </svg>
       </div>
 
-      <Button label={'Add to card'} className={'primary'} />
+      <Button label={"Add to card"} className={"primary"} />
     </div>
   );
 }

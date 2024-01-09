@@ -7,12 +7,13 @@ function HistoryPage() {
 
   const handleStartOrdering = () => {
     navigate("/home");
-  }
+  };
 
   return (
     <div className="historyPage">
       <div className="header">
         <svg
+          onClick={() => navigate(-1)}
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -47,9 +48,12 @@ function HistoryPage() {
           <h2>No history yet</h2>
           <p>Hit the orange button down below to Create an order</p>
         </div>
-        
       </div>
-      <Button label={"Start Ordering"} className={"primary button-bottom"} onClick={handleStartOrdering}/>
+      <Button
+        label={"Start Ordering"}
+        className={"primary button-bottom"}
+        onClick={handleStartOrdering}
+      />
     </div>
   );
 }

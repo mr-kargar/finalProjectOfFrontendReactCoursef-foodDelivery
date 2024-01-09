@@ -1,11 +1,16 @@
 import React from "react";
 import Button from "../components/button";
+import { useNavigate } from "react-router-dom";
 
 function MyProfilePage() {
+
+  const navigate = useNavigate();
   return (
     <div className="myProfilePage">
       <div className="myProfilePage-header">
         <svg
+                onClick={() => navigate(-1)}
+
           width="24"
           height="24"
           viewBox="0 0 24 24"

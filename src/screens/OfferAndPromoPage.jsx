@@ -1,10 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function OfferAndPromoPage() {
+  const navigate = useNavigate();
   return (
     <div className="offerAndPromoPage">
       <div className="header">
         <svg
+                onClick={() => navigate(-1)}
+
           width="24"
           height="24"
           viewBox="0 0 24 24"

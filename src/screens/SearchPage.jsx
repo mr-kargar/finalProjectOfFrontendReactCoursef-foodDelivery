@@ -2,17 +2,21 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import FoodView from "../components/FoodView";
+import { useNavigate } from "react-router-dom";
 
 function SearchPage() {
   const { name } = useParams();
 
   const search = useSelector((state) => state.search);
+  const navigate = useNavigate();
 
   return (
     <>
       <div className="searchPage">
         <div className="searchPage-header">
           <svg
+                  onClick={() => navigate(-1)}
+
             width="24"
             height="24"
             viewBox="0 0 24 24"
