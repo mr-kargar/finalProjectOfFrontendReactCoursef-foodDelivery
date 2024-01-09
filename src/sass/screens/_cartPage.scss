@@ -22,6 +22,16 @@
     }
   }
 
+  &-clearCartIcon {
+    position: absolute;
+    margin-left: 41px;
+    margin-top: 20px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   &-content {
     height: 75%;
     display: flex;

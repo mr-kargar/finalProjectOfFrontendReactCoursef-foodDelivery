@@ -6,7 +6,7 @@ import { changeItemQuantityAction } from "../redux/cartSlice";
 function FoodInCart(props) {
   const [quantity, setQuantity] = useState(props.item.quantity);
   
-console.log(props);
+
 const dispatch = useDispatch();
 
 

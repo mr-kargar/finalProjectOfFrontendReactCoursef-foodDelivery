@@ -11,6 +11,7 @@ import { searchFetch } from "../redux/searchSlice";
 import { useNavigate } from "react-router-dom";
 import Badge from "../components/Badge";
 import { userLogoutAction } from "../redux/userSlice";
+import { clearCartAction } from "../redux/cartSlice";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -67,6 +68,7 @@ function HomePage() {
 
   function logoutHandler() {
     dispatch(userLogoutAction());
+    dispatch(clearCartAction());
     setTimeout(() => {
       navigate("../");
     }, 1000);
