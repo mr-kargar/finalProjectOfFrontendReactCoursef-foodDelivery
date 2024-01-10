@@ -13,6 +13,7 @@ function FoodDetailsPage() {
   const { name } = useParams();
 
   const foodDetails = useSelector((state) => state.food.foods.data);
+
   const foodDetail = foodDetails.filter((food) => food.name === name);
 
   function addToCartHandler() {

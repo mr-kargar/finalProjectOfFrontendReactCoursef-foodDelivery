@@ -56,9 +56,15 @@
 
     &-food {
       display: flex;
-
       padding: 0px 41px 0px 41px;
       gap: 30px;
+      overflow-x: scroll;
+      
+
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
 }

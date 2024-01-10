@@ -24,14 +24,20 @@
         }
       }
       
-      .content {
-        height: 75%;
+      &-content {
+        height: 70%;
         display: flex;
+        margin-top: 50px;
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
       
-        .emptyOrders {
+        &-emptyOrders {
           display: flex;
           justify-content: center;
           align-items: center;
