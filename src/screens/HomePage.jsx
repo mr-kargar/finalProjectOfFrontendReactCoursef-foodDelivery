@@ -134,7 +134,8 @@ function HomePage() {
 
           <div className="homePage-content-food">
             {foodList.loading ? (
-              <h1>is loading...</h1>
+              <div className="homePage-content-food-loading"></div>
+            
             ) : (
               foodList.foods.data.map((food) => {
                 return (
