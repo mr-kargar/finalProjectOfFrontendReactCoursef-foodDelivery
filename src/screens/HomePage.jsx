@@ -117,7 +117,8 @@ function HomePage() {
           </div>
         </div>
         <div className="homePage-content">
-          <h1 className="homePage-content-title">Delicious food for you</h1>
+          <p className="homePage-content-title">Delicious <br/>
+           food for you</p>
           <SearchBar onKeyPress={handelSearch} />
           <div className="homePage-content-filter">
             {types.map((type) => {

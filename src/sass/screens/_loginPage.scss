@@ -18,6 +18,7 @@
       position: relative;
 
       &-loginSignUpContainer {
+        font-family: $font-main;
         display: flex;
         justify-content: space-evenly;
         width: 414px;
@@ -31,7 +32,6 @@
         }
 
         p {
-          padding-bottom: 16px;
           padding-left: 50px;
           padding-right: 50px;
         }
@@ -49,17 +49,19 @@
       margin-bottom: 190px;
       
 
-      :first-child {
-        margin-top: 64px;
-      }
+      // :first-child {
+      //   margin-top: 64px;
+      // }
 
       label {
+
         margin-top: 40px;
         color: #000000;
         opacity: 0.4;
       }
 
       input {
+       font-weight: 600;
         margin-top: 9px;
         border: none;
         border-bottom: 1px solid #000000;
