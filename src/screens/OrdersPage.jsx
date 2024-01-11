@@ -45,7 +45,7 @@ function OrdersPage() {
       </div>
       {orders.data  ? (
         <div className="ordersPage-content">
-          {orders.data.map((order) => {
+          {orders.data.toReversed().map((order) => {
             return <Order order={order} />;
           })}
         </div>
