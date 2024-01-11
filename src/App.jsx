@@ -11,32 +11,89 @@ import FoodDetailsPage from "./screens/FoodDetailsPage";
 import CheckoutPage from "./screens/CheckoutPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CartPage from "./screens/CartPage";
-
-
+import ProtectedRoute from "./utils/ProtectedRoute";
 
 function App() {
-
-  
-  
   return (
     <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<StartPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/home" element={<HomePage />} />
-      <Route path="/profile" element={<MyProfilePage />} />
-      <Route path="/history" element={<HistoryPage />} />
-      <Route path="/order" element={<OrdersPage />} />
-      <Route path="/offer" element={<OfferAndPromoPage />} />
-      <Route path="/search/:name" element={<SearchPage />} />
-      <Route path="/foodDetails/:name" element={<FoodDetailsPage />} />
-      <Route path="/cart" element={<CartPage />} />
-      <Route path="/cart/payment/:totalSum" element={<CheckoutPage />} />
-    </Routes>
+      <Routes>
+        <Route path="/" element={<StartPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <MyProfilePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            <ProtectedRoute>
+              <HistoryPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/order"
+          element={
+            <ProtectedRoute>
+              <OrdersPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/offer"
+          element={
+            <ProtectedRoute>
+              <OfferAndPromoPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/search/:name"
+          element={
+            <ProtectedRoute>
+              <SearchPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/foodDetails/:name"
+          element={
+            <ProtectedRoute>
+              <FoodDetailsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <ProtectedRoute>
+              <CartPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/cart/payment/:totalSum"
+          element={
+            <ProtectedRoute>
+              <CheckoutPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="*" element={<LoginPage />} />
+      </Routes>
     </BrowserRouter>
-    
-   
-   
   );
 }
 
