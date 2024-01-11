@@ -1,13 +1,13 @@
 @font-face {
-    font-family: 'title-font';
-    src: url('../../assets/fonts/SFProRoundedRegular.ttf') format('truetype'),
-    url('../../assets/fonts/SFProRoundedRegular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    
+  font-family: "title-font";
+  src: url("src/assets/fonts/fontsfree-net-sf-pro-rounded-bold-webfont.woff2") format("woff2"),
+    url("src/assets/fonts/fontsfree-net-sf-pro-rounded-bold-webfont.woff") format("woff");
 
 }
 
-
-
-
+@font-face {
+    font-family: "main-font";
+    src: url("src/assets/fonts/sfproroundedregular-webfont.woff2") format("woff2"),
+      url("src\assets\fonts\sfproroundedregular-webfont.woff") format("woff");
+      
+  }

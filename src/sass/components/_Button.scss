@@ -1,13 +1,17 @@
 button {
+  font-family: $font-main;
+  letter-spacing: 2px;
   width: 314px;
   height: 70px;
   border: none;
   border-radius: 30px;
-  padding: 25px;
   font-size: 1.07rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &.primary {
     background-color: $color-primary;

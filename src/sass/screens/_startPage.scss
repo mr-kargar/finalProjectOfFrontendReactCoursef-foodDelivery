@@ -1,7 +1,14 @@
 .startPage {
-  @include main-template($bg-color: $color-primary, $border-color: $color-dark , $percent: 1%);
+  @include main-template(
+    $bg-color: $color-primary,
+    $border-color: $color-dark,
+    $percent: 1%
+  );
+
+  position: relative;
 
   &-content {
+    height: 75%;
     &-logoContainer {
       width: 73px;
       height: 73px;
@@ -21,19 +28,21 @@
 
     p {
       font-family: $font-title;
-      font-size: 65px;
-      font-weight: 800;
+      font-size: 4rem;
       color: $color-white;
       margin-left: 51px;
       margin-top: 31px;
+      line-height: 0.9;
     }
 
     &-image {
-      margin-top: 30px;
+      margin-top: 75px;
     }
   }
 
   Button {
+    position: absolute;
+    bottom: 41px;
     margin-left: 40px;
   }
 }
