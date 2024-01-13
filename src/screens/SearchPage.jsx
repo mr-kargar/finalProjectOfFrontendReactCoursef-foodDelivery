@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import FoodView from "../components/FoodView";
 import { useNavigate } from "react-router-dom";
 
@@ -66,7 +66,7 @@ function SearchPage() {
           ) : (
             <div className="searchPage-content">
            { search.search.data.map((food) => {
-              return <FoodView key={food._id} food={food} />;
+              return <Link to={`../foodDetails/${food.name}`} className={"linkStyle"} ><FoodView key={food._id} food={food} /></Link>;
             })
           }
             </div>
