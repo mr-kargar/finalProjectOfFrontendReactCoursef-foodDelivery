@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import Badge from "../components/Badge";
 import { userLogoutAction } from "../redux/userSlice";
 import { clearCartAction } from "../redux/cartSlice";
+import Loader from "../components/Loader";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -39,9 +40,7 @@ function HomePage() {
   const foodList = useSelector((state) => state.food);
 
   const handelSearch = (e) => {
-   
-    if (e.key === "Enter" && e.target.value !="") {
-      
+    if (e.key === "Enter" && e.target.value != "") {
       const data = { token: token, name: e.target.value };
       dispatch(searchFetch(data)).then(() => {
         navigate(`/search/${e.target.value}`);
@@ -72,7 +71,6 @@ function HomePage() {
     setTimeout(() => {
       navigate("../");
     }, 1000);
-    
   }
 
   return (
@@ -117,8 +115,10 @@ function HomePage() {
           </div>
         </div>
         <div className="homePage-content">
-          <p className="homePage-content-title">Delicious <br/>
-           food for you</p>
+          <p className="homePage-content-title">
+            Delicious <br />
+            food for you
+          </p>
           <SearchBar onKeyPress={handelSearch} />
           <div className="homePage-content-filter">
             {types.map((type) => {
@@ -135,8 +135,7 @@ function HomePage() {
 
           <div className="homePage-content-food">
             {foodList.loading ? (
-              <div className="homePage-content-food-loading"></div>
-            
+              <Loader className={"homePage-content-food-loader"}/>
             ) : (
               foodList.foods.data.map((food) => {
                 return (

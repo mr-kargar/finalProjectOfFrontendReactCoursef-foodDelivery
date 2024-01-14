@@ -9,7 +9,7 @@ export const foodDetailsFetch = createAsyncThunk('foodDetails/fetch', async (dat
                 auth: data.token,
             },
         });
-        
+        console.log("food details slice ;" , foodDetailsData);
         return foodDetailsData.data;
     } catch (error) {
         console.error(error.message);

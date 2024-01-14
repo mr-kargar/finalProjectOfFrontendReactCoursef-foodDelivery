@@ -5,6 +5,7 @@ import { addItemAction } from "../redux/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { foodDetailsFetch } from "../redux/foodDetailsSlice";
+import Loader from "../components/Loader";
 
 function FoodDetailsPage() {
   const token = localStorage.getItem("token");
@@ -12,26 +13,36 @@ function FoodDetailsPage() {
   const navigate = useNavigate();
   const { name } = useParams();
 
-  const foodDetails = useSelector((state) => state.food.foods.data);
+  // const foodDetails = useSelector((state) => state.food.foods.data);
 
-  const foodDetail = foodDetails.filter((food) => food.name === name);
+  // const foodDetail = foodDetails.filter((food) => food.name === name);
+
+  const foodDetail = useSelector((state) => state.foodDetails.foodDetail.data);
+ 
 
   function addToCartHandler() {
     dispatch(addItemAction(foodDetail[0]));
     navigate("../cart");
   }
+  const data = { token: token, name: name };
 
-  // useEffect(() => { 
-  //   const data = { token: token ,name: name };
-  //   dispatch(foodDetailsFetch(data));
-  // }, []);
-  
+  function fetchData(data) {
+   
+      
+    };
+
+
+  useEffect(() => {
+    console.log(data);
+    dispatch(foodDetailsFetch(data));
+    console.log(foodDetail);
+  }, []);
 
   return (
     <div className="foodDetailsPage">
       <div className="header">
         <svg
-        onClick={() => navigate(-1)}
+          onClick={() => navigate(-1)}
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -49,11 +60,20 @@ function FoodDetailsPage() {
 
         <h3>{name}</h3>
       </div>
-      <div className="foodDetailsPage-content">
-        <img src="src/assets/images/Rectangle 6.png" alt="" srcset="" />
+      
+        
+        {foodDetail ?  
+        <div className="foodDetailsPage-content">
+          <img src="src/assets/images/Mask Group.png" alt="" srcset="" />
         <h1>{foodDetail[0].name}</h1>
         <h3>{foodDetail[0].price}</h3>
-      </div>
+        </div>
+        : 
+        <div className="foodDetailsPage-content">
+        <Loader className={"foodDetailsPage-content-loader"}/>
+        </div>
+      }
+      
 
       <Button
         label={"Add to cart"}
@@ -62,6 +82,7 @@ function FoodDetailsPage() {
       />
     </div>
   );
-}
+      }
+
 
 export default FoodDetailsPage;
