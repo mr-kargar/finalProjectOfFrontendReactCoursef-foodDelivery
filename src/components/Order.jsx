@@ -1,7 +1,7 @@
 import React from "react";
 
 const Order = ({ order }) => {
-    console.log(order);
+    
   return (
     <div className="order">
         <div className="order-header">
