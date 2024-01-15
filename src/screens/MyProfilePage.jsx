@@ -1,6 +1,8 @@
 import React from "react";
 import Button from "../components/button";
 import { useNavigate } from "react-router-dom";
+import LinkItem from "../components/LinkItem";
+import { Link } from "react-router-dom";
 
 function MyProfilePage() {
 
@@ -30,35 +32,25 @@ function MyProfilePage() {
       </div>
 
       <div className="myProfilePage-content">
-        <div className="myProfilePage-content-information">
-          <h3>information</h3>
-          <div className="myProfilePage-content-information-content">
+        
+          <h3>Personal details</h3>
+
+          <div className="myProfilePage-content-personalDetails">
             <img src="src\assets\images\Rectangle 6.png" alt="avatar" />
-            <div className="myProfilePage-content-information-content-detail">
+            <div className="myProfilePage-content-personalDetails-content">
               <h2>Marvis Ighedosa</h2>
               <h5>dosamarvis@gmail.com</h5>
               <p>No 15 uti street off ovie palace road effurun delta state</p>
             </div>
           </div>
-        </div>
+     <Link to={"/order"} >  <LinkItem label={"Orders"} /></Link>
+      <Link to={"#"} ><LinkItem label={"Pending reviews"} /></Link>
+      <Link to={"#"} ><LinkItem label={"Faq"} /></Link>
+      <Link to={"#"} ><LinkItem label={"Help"} /></Link>
+       
+       
 
-        <div className="myProfilePage-content-paymentMethod">
-          <h3>Payment Method</h3>
-          <div className="myProfilePage-content-paymentMethod-content">
-            <label>
-              <input type="radio" value="option1" />
-              Option 1
-            </label>
-            <label>
-              <input type="radio" value="option2" />
-              Option 2
-            </label>
-            <label>
-              <input type="radio" value="option3" />
-              Option 3
-            </label>
-          </div>
-        </div>
+      
 
         <Button label={"Update"} className={'primary button-bottom'}/>
       </div>
