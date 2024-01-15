@@ -25,16 +25,9 @@ function CartPage() {
 
     const order = { token: token, orderItems: orderItem };
 
-    const response = dispatch(submitOrder({ order })).then(() => {
-      const totalItem = cartItems.map((item) => {
-        return item.price * item.quantity;
-      });
-      let totalSum = 0;
-      totalItem.forEach((item) => {
-        totalSum += item;
-      });
+    const response = dispatch(submitOrder({ order })).then((res) => {
 
-      navigate(`./payment/${totalSum}`);
+      navigate(`./payment/${res.payload.data._id}`);
     });
   }
 

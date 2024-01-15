@@ -84,7 +84,7 @@ function App() {
           }
         />
         <Route
-          path="/cart/payment/:totalSum"
+          path="/cart/payment/:id"
           element={
             <ProtectedRoute>
               <CheckoutPage />

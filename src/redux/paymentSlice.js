@@ -4,9 +4,10 @@ import axios from "axios";
 export const submitPayment = createAsyncThunk(
   "payment/submitPayment",
   async (payment) => {
+   
     try {
       const response = await axios.patch(
-        `http://localhost:3000/order/${payment.orderId}`,
+        `http://localhost:3000/order/${payment.orderId.data._id}`,
         {
           newStatus: "confirmed",
         },
@@ -48,3 +49,5 @@ const paymentSlice = createSlice({
     });
   },
 });
+
+export default paymentSlice.reducer;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Button from "../components/Button";
 import { useParams } from "react-router-dom";
@@ -6,23 +6,27 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { submitPayment } from "../redux/paymentSlice";
-import { clearCartAction } from "../redux/cartSlice";  
+import { clearCartAction } from "../redux/cartSlice";
+import { getOrderById } from "../redux/orderSlice";
+import Loader from "../components/Loader";
 
 function CheckoutPage() {
-  const { totalSum } = useParams();
+  const { id } = useParams();
   const [message, setMessage] = useState("");
-
-  const token = localStorage.getItem("token");
-  const orderId = useSelector((state) => state.order.order.data._id);
- 
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    dispatch(getOrderById({ token, id }));
+  }, []);
+  const orderId = useSelector((state) => state.order.order);
 
   function handlePayment() {
     dispatch(submitPayment({ token, orderId })).then((res) => {
       if (res.payload) {
-        setMessage(`Payment ${res.payload.data.status}`);
+        setMessage(`Payment :  ${res.payload.data.status}`);
         dispatch(clearCartAction());
         setTimeout(() => {
           navigate("/home");
@@ -35,8 +39,7 @@ function CheckoutPage() {
     <div className="checkoutPage">
       <div className="header">
         <svg
-                onClick={() => navigate(-1)}
-
+          onClick={() => navigate(-1)}
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -55,11 +58,21 @@ function CheckoutPage() {
         <h3>Payment</h3>
       </div>
       <div className="checkoutPage-content">
-        <h2>Total: {totalSum}</h2>
-        <p>{message}</p>
+        {orderId.data ? (
+          <div>
+            <h2>Total: {orderId.data.totalAmount}</h2>
+            <p>{message}</p>
+          </div>
+        ) : (
+          <Loader />
+        )}
       </div>
 
-      <Button label={"Payment"} className={"primary button-bottom"} onClick={handlePayment} />
+      <Button
+        label={"Payment"}
+        className={"primary button-bottom"}
+        onClick={handlePayment}
+      />
     </div>
   );
 }

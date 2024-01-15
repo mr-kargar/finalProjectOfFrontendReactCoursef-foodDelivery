@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import FoodView from "../components/FoodView";
 import { useNavigate } from "react-router-dom";
 import { searchFetch } from "../redux/searchSlice";
+import Loader from "../components/Loader";
 
 function SearchPage() {
   const { name } = useParams();
@@ -70,7 +71,8 @@ function SearchPage() {
           </div>
         ) : (
           <div className="searchPage-content">
-            {search.search.data.map((food) => {
+            {search.search.data ?
+             search.search.data.map((food) => {
               return (
                 <Link
                   to={`../foodDetails/${food.name}`}
@@ -79,7 +81,9 @@ function SearchPage() {
                   <FoodView key={food._id} food={food} />
                 </Link>
               );
-            })}
+            }):
+            <Loader />
+            }
           </div>
         )}
       </div>
