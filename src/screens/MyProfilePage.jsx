@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "../components/button";
 import { useNavigate } from "react-router-dom";
 import LinkItem from "../components/LinkItem";
 import { Link } from "react-router-dom";
+import { userInfoFetch } from "../redux/userInfoSlice";
+import { useDispatch , useSelector } from "react-redux";
 
 function MyProfilePage() {
-
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+const userInfo = useSelector((state) => state.userInfo);
+
+  useEffect(() => {
+    dispatch(userInfoFetch(token));
+  }, []);
+
   return (
     <div className="myProfilePage">
       <div className="myProfilePage-header">
         <svg
-                onClick={() => navigate(-1)}
-
+          onClick={() => navigate(-1)}
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -32,27 +40,32 @@ function MyProfilePage() {
       </div>
 
       <div className="myProfilePage-content">
-        
-          <h3>Personal details</h3>
+        <h3>Personal details</h3>
 
-          <div className="myProfilePage-content-personalDetails">
-            <img src="src\assets\images\Rectangle 6.png" alt="avatar" />
-            <div className="myProfilePage-content-personalDetails-content">
-              <h2>Marvis Ighedosa</h2>
-              <h5>dosamarvis@gmail.com</h5>
-              <p>No 15 uti street off ovie palace road effurun delta state</p>
-            </div>
+        <div className="myProfilePage-content-personalDetails">
+          <img src="src\assets\images\Rectangle 6.png" alt="avatar" />
+          <div className="myProfilePage-content-personalDetails-content">
+            <h2>{userInfo.user.fullName ? userInfo.user.fullName : "" }</h2>
+            <p>{userInfo.user.email}</p>
+            <p>{userInfo.user.mobile ? userInfo.user.mobile : ""}</p>
+            <p>{userInfo.user.address ? userInfo.user.address : "" }</p>
           </div>
-     <Link to={"/order"} >  <LinkItem label={"Orders"} /></Link>
-      <Link to={"#"} ><LinkItem label={"Pending reviews"} /></Link>
-      <Link to={"#"} ><LinkItem label={"Faq"} /></Link>
-      <Link to={"#"} ><LinkItem label={"Help"} /></Link>
-       
-       
+        </div>
+        <Link to={"/order"}>
+          {" "}
+          <LinkItem label={"Orders"} />
+        </Link>
+        <Link to={"#"}>
+          <LinkItem label={"Pending reviews"} />
+        </Link>
+        <Link to={"#"}>
+          <LinkItem label={"Faq"} />
+        </Link>
+        <Link to={"#"}>
+          <LinkItem label={"Help"} />
+        </Link>
 
-      
-
-        <Button label={"Update"} className={'primary button-bottom'}/>
+        <Button label={"Update"} className={"primary button-bottom"} />
       </div>
     </div>
   );
