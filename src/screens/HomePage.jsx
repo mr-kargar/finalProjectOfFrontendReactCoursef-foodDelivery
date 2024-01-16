@@ -16,17 +16,16 @@ import Loader from "../components/Loader";
 
 function HomePage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
+  const [show, setShow] = useState(false);
 
   const types = ["foods", "drinks", "snacks", "sauces", "salads"];
-  const [show, setShow] = useState(false);
+  const foodList = useSelector((state) => state.food);
 
   function showMenu() {
     setShow(!show);
   }
-
-  const token = localStorage.getItem("token");
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     showFoodByType(token, "foods");
@@ -37,8 +36,6 @@ function HomePage() {
     dispatch(foodFetch(data));
   };
 
-  const foodList = useSelector((state) => state.food);
-
   const handelSearch = (e) => {
     if (e.key === "Enter" && e.target.value != "") {
       const data = { token: token, name: e.target.value };
@@ -48,7 +45,6 @@ function HomePage() {
     }
   };
 
-  const foodSearch = useSelector((state) => state.search);
   const cart = useSelector((state) => state.cart);
 
   let sumQuantity = 0;
@@ -78,7 +74,7 @@ function HomePage() {
       <div className={`homePage ${show ? "showMenu" : null}`}>
         <div className="homePage-header">
           <HamburgerMenu showMenu={showMenu} />
-          <div className="cartShop">
+          <div className="homePage-header-cartShop">
             <svg
               onClick={cartShow}
               width="24"
@@ -135,7 +131,7 @@ function HomePage() {
 
           <div className="homePage-content-food">
             {foodList.loading ? (
-              <Loader className={"homePage-content-food-loader"}/>
+              <Loader className={"homePage-content-food-loader"} />
             ) : (
               foodList.foods.data.map((food) => {
                 return (

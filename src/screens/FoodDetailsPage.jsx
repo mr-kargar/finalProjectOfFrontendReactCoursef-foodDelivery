@@ -13,12 +13,7 @@ function FoodDetailsPage() {
   const navigate = useNavigate();
   const { name } = useParams();
 
-  // const foodDetails = useSelector((state) => state.food.foods.data);
-
-  // const foodDetail = foodDetails.filter((food) => food.name === name);
-
   const foodDetail = useSelector((state) => state.foodDetails.foodDetail.data);
- 
 
   function addToCartHandler() {
     dispatch(addItemAction(foodDetail[0]));
@@ -26,16 +21,10 @@ function FoodDetailsPage() {
   }
   const data = { token: token, name: name };
 
-  function fetchData(data) {
-   
-      
-    };
-
+  function fetchData(data) {}
 
   useEffect(() => {
-    console.log(data);
     dispatch(foodDetailsFetch(data));
-    console.log(foodDetail);
   }, []);
 
   return (
@@ -52,28 +41,26 @@ function FoodDetailsPage() {
           <path
             d="M15 18L9 12L15 6"
             stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
 
         <h3>{name}</h3>
       </div>
-      
-        
-        {foodDetail ?  
+
+      {foodDetail ? (
         <div className="foodDetailsPage-content">
-          <img src="src/assets/images/Mask Group.png" alt="" srcset="" />
-        <h1>{foodDetail[0].name}</h1>
-        <h3>{foodDetail[0].price}</h3>
+          <img src="src/assets/images/Mask Group.png" alt="" srcSet="" />
+          <h1>{foodDetail[0].name}</h1>
+          <h3>{foodDetail[0].price}</h3>
         </div>
-        : 
+      ) : (
         <div className="foodDetailsPage-content">
-        <Loader className={"foodDetailsPage-content-loader"}/>
+          <Loader className={"foodDetailsPage-content-loader"} />
         </div>
-      }
-      
+      )}
 
       <Button
         label={"Add to cart"}
@@ -82,7 +69,6 @@ function FoodDetailsPage() {
       />
     </div>
   );
-      }
-
+}
 
 export default FoodDetailsPage;

@@ -4,14 +4,14 @@ import axios from "axios";
 export const userInfoFetch = createAsyncThunk(
   "userInfo/fetch",
   async (token) => {
-    console.log(token);
+    
     try {
       const response = await axios.get('http://localhost:3000/user', {
         headers: {
           auth: token,
         },
       });
-      console.log(response.data.data);
+      
       return(response.data.data);
     } catch (error) {
       console.error(error);

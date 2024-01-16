@@ -136,11 +136,7 @@ function LoginPage() {
     <div className="loginPage">
       <div className="loginPage-content">
         <div className="loginPage-content-topContainer">
-          <img
-            src="src\assets\images\logo.png"
-            alt="logo"
-            className="loginPage-content-logoContainer-logo"
-          />
+          <img src="src\assets\images\logo.png" alt="logo" />
           <div
             className="loginPage-content-topContainer-loginSignUpContainer"
             onClick={showForm}
@@ -191,6 +187,7 @@ function LoginPage() {
             message={"Login successfully"}
           />
         </form>
+
         <form
           className={`loginPage-content-formContainer signUpMargin ${
             show ? null : "show"

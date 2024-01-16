@@ -7,14 +7,13 @@
   transition: all 0.5s ease-in-out;
   position: relative;
   z-index: 1;
-  
 
   &-header {
     display: flex;
     justify-content: space-between;
     padding: 74px 41px 43px 41px;
 
-    .cartShop {
+    &-cartShop {
       position: relative;
 
       &:hover {
@@ -24,8 +23,8 @@
   }
 
   &-content {
-     position: relative;
-     height: 70%;
+    position: relative;
+    height: 70%;
 
     &-title {
       font-family: $font-title;
@@ -50,31 +49,20 @@
       }
     }
 
-    h3 {
-      font-weight: 700;
-      font-size: 1.6rem;
-      margin-bottom: 28px;
-      margin-right: 50px;
-    }
-
     &-food {
       display: flex;
       padding: 0px 41px 0px 41px;
       gap: 30px;
       overflow-x: scroll;
-      
-      
 
       &::-webkit-scrollbar {
         display: none;
       }
 
-      &-loader{
+      &-loader {
         top: 60%;
         left: 175px;
       }
-
-     
     }
   }
 }
@@ -84,7 +72,6 @@
 
   position: absolute;
   top: 10px;
- 
 
   &-list {
     margin-top: 161px;
