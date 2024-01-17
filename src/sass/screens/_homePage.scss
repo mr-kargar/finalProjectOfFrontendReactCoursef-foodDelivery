@@ -1,6 +1,6 @@
 .homePage {
   @include main-template(
-    $bg-color: darken($color: $background-color-primary, $amount: 3%)
+    $bg-color: $background-color-primary
   );
 
   transition: all 0.5s ease-in-out;
