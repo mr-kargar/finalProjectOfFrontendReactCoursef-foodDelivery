@@ -1,7 +1,6 @@
 .homePage {
   @include main-template(
-    $bg-color: $background-color-primary,
-    $border-color: $color-dark
+    $bg-color: darken($color: $background-color-primary, $amount: 3%)
   );
 
   transition: all 0.5s ease-in-out;
@@ -68,7 +67,7 @@
 }
 
 .mainMenu {
-  @include main-template($bg-color: $color-primary, $border-color: $color-dark);
+  @include main-template($bg-color: $color-primary);
 
   position: absolute;
   top: 10px;

@@ -1,8 +1,6 @@
 .startPage {
   @include main-template(
-    $bg-color: $color-primary,
-    $border-color: $color-dark,
-    $percent: 1%
+    $bg-color: darken($color: $color-primary, $amount: 1%)
   );
 
    position: relative;

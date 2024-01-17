@@ -1,8 +1,9 @@
 .myProfilePage{
-    width: 414px;
-    height: 896px;
-    border-radius: 20px;
-    background-color: lighten($color: $background-color-primary, $amount: 1%);
+  @include main-template(
+    $bg-color: lighten($color: $background-color-primary, $amount: 1%)
+  );
+    
+   
     position: relative;
   
   

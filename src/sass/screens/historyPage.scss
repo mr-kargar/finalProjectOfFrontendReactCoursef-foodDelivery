@@ -1,8 +1,9 @@
 .historyPage {
-  width: 414px;
-  height: 896px;
-  border-radius: 20px;
-  background-color: lighten($color: $background-color-primary, $amount: 3%);
+  @include main-template(
+    $bg-color: lighten($color: $background-color-primary, $amount: 3%)
+  );
+  
+  
   position: relative;
 }
 
