@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../components/button";
 import { useNavigate } from "react-router-dom";
+import {motion} from 'framer-motion';
 
 function HistoryPage() {
   const navigate = useNavigate();
@@ -10,7 +11,14 @@ function HistoryPage() {
   };
 
   return (
-    <div className="historyPage">
+    <motion.div
+    animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.5,
+        delay: 0.1,
+      }}
+      initial={{ opacity: 0, scale: 0.5 }}
+     className="historyPage">
       <div className="header">
         <svg
           onClick={() => navigate(-1)}
@@ -54,7 +62,7 @@ function HistoryPage() {
         className={"primary button-bottom"}
         onClick={handleStartOrdering}
       />
-    </div>
+    </motion.div>
   );
 }
 

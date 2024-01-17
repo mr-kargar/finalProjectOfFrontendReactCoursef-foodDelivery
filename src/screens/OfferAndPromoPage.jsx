@@ -1,10 +1,19 @@
+import { motion } from "framer-motion";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+
 
 function OfferAndPromoPage() {
   const navigate = useNavigate();
   return (
-    <div className="offerAndPromoPage">
+    <motion.div 
+    animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.5,
+        delay: 0.1,
+      }}
+      initial={{ opacity: 0, scale: 0.5 }}
+    className="offerAndPromoPage">
       <div className="header">
         <svg
                 onClick={() => navigate(-1)}
@@ -32,7 +41,7 @@ function OfferAndPromoPage() {
           <p>Bella dose’t have any offers yet please check again.</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

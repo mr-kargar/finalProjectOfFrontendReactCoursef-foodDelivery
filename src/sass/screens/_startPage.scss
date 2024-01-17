@@ -5,10 +5,11 @@
     $percent: 1%
   );
 
-  position: relative;
+   position: relative;
 
   &-content {
     height: 75%;
+    padding-top: 50px;
     &-logoContainer {
       width: 73px;
       height: 73px;
@@ -18,7 +19,7 @@
       justify-content: center;
       align-items: center;
       margin-left: 49px;
-      margin-top: 56px;
+      
 
       &-logo {
         width: 49px;

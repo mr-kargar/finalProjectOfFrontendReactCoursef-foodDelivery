@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../components/button";
 import { useNavigate } from "react-router-dom";
+import {motion} from 'framer-motion';
 
 function startPage() {
   const navigate = useNavigate();
@@ -10,7 +11,14 @@ function startPage() {
   };
 
   return (
-    <div className="startPage">
+    <motion.div
+    animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.5,
+        delay: 0.1,
+      }}
+      initial={{ opacity: 0, scale: 0.5 }}
+    className="startPage">
       <div className="startPage-content">
         <div className="startPage-content-logoContainer">
           <img
@@ -31,7 +39,7 @@ function startPage() {
         className={"get-started startPage-button"}
         onClick={handleClick}
       />
-    </div>
+    </motion.div>
   );
 }
 

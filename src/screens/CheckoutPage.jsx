@@ -9,6 +9,7 @@ import { submitPayment } from "../redux/paymentSlice";
 import { clearCartAction } from "../redux/cartSlice";
 import { getOrderById } from "../redux/orderSlice";
 import Loader from "../components/Loader";
+import { motion } from "framer-motion";
 
 function CheckoutPage() {
   const { id } = useParams();
@@ -36,7 +37,14 @@ function CheckoutPage() {
   }
 
   return (
-    <div className="checkoutPage">
+    <motion.div
+    animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.5,
+        delay: 0.1,
+      }}
+      initial={{ opacity: 0, scale: 0.5 }}
+    className="checkoutPage">
       <div className="header">
         <svg
           onClick={() => navigate(-1)}
@@ -73,7 +81,7 @@ function CheckoutPage() {
         className={"primary button-bottom"}
         onClick={handlePayment}
       />
-    </div>
+    </motion.div>
   );
 }
 

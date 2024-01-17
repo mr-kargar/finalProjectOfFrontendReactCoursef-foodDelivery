@@ -72,6 +72,10 @@
 
   position: absolute;
   top: 10px;
+  display: none;
+  transition: all 0.5s ease-in-out;
+
+  
 
   &-list {
     margin-top: 161px;
@@ -113,6 +117,10 @@
   border: none;
   transform: translate(220px, 0px) scale(0.7);
   box-shadow: -30px 50px 0px 9px rgba(255, 255, 255, 0.3);
+}
+
+.showMenuItem{
+  display: flex;
 }
 
 .showUl li {

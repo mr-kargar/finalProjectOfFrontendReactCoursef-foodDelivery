@@ -13,6 +13,7 @@ import Badge from "../components/Badge";
 import { userLogoutAction } from "../redux/userSlice";
 import { clearCartAction } from "../redux/cartSlice";
 import Loader from "../components/Loader";
+import { motion } from "framer-motion";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -70,8 +71,18 @@ function HomePage() {
   }
 
   return (
-    <>
-      <div className={`homePage ${show ? "showMenu" : null}`}>
+    <motion.div
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.5,
+        delay: 0.1,
+      }}
+      initial={{ opacity: 0, scale: 0.5 }}
+    >
+      <div
+       
+        className={`homePage ${show ? "showMenu" : null}`}
+      >
         <div className="homePage-header">
           <HamburgerMenu showMenu={showMenu} />
           <div className="homePage-header-cartShop">
@@ -150,7 +161,7 @@ function HomePage() {
         <BottomMenu />
       </div>
 
-      <div className="mainMenu" onClick={showMenu}>
+      <div className={`mainMenu ${show ? "showMenuItem" : null}`} onClick={showMenu}>
         <ul className={`mainMenu-list ${show ? "showUl" : null}`}>
           <li>
             <svg
@@ -275,7 +286,7 @@ function HomePage() {
           <span onClick={logoutHandler}>Sign-out</span>
         </div>
       </div>
-    </>
+    </motion.div>
   );
 }
 

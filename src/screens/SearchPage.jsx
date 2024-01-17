@@ -5,6 +5,8 @@ import FoodView from "../components/FoodView";
 import { useNavigate } from "react-router-dom";
 import { searchFetch } from "../redux/searchSlice";
 import Loader from "../components/Loader";
+import { motion } from "framer-motion";
+
 
 function SearchPage() {
   const { name } = useParams();
@@ -20,7 +22,14 @@ function SearchPage() {
 
   return (
     <>
-      <div className="searchPage">
+      <motion.div 
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.5,
+        delay: 0.1,
+      }}
+      initial={{ opacity: 0, scale: 0.5 }}
+      className="searchPage">
         <div className="searchPage-header">
           <svg
             onClick={() => navigate(-1)}
@@ -86,7 +95,7 @@ function SearchPage() {
             }
           </div>
         )}
-      </div>
+      </motion.div>
     </>
   );
 }

@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { submitOrder } from "../redux/orderSlice";
 import { clearCartAction } from "../redux/cartSlice";
+import { motion } from "framer-motion";
 
 function CartPage() {
   const token = localStorage.getItem("token");
@@ -32,7 +33,14 @@ function CartPage() {
   }
 
   return (
-    <div className="cartPage">
+    <motion.div
+    animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.5,
+        delay: 0.1,
+      }}
+      initial={{ opacity: 0, scale: 0.5 }}
+    className="cartPage">
       <div className="header">
         <svg
                 onClick={() => navigate(-1)}
@@ -101,7 +109,7 @@ function CartPage() {
         className={"primary button-bottom"}
         onClick={localStorage.getItem("cart") ? handleCompleteOrder : handelStartOrdering}
       />
-    </div>
+    </motion.div>
   );
 }
 

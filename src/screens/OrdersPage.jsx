@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { fetchOrders } from "../redux/ordersSlice";
 import { useSelector } from "react-redux";
 import Order from "../components/Order";
+import {motion} from 'framer-motion';
 
 function OrdersPage() {
   const navigate = useNavigate();
@@ -22,7 +23,14 @@ function OrdersPage() {
   }, []);
 
   return (
-    <div className="ordersPage">
+    <motion.div 
+    animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.5,
+        delay: 0.1,
+      }}
+      initial={{ opacity: 0, scale: 0.5 }}
+    className="ordersPage">
       <div className="header">
         <svg
           onClick={() => navigate(-1)}
@@ -103,7 +111,7 @@ function OrdersPage() {
         className={"primary button-bottom"}
         onClick={handleStartOrdering}
       />
-    </div>
+    </motion.div>
   );
 }
 

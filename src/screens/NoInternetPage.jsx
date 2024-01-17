@@ -1,9 +1,18 @@
 import React from "react";
 import Button from "../components/Button";
+import { motion } from "framer-motion";
+
 
 function NoInternetPage() {
   return (
-    <div className="noInternetPage">
+    <motion.div 
+    animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.5,
+        delay: 0.1,
+      }}
+      initial={{ opacity: 0, scale: 0.5 }}
+    className="noInternetPage">
       <svg
         width="160"
         height="160"
@@ -26,7 +35,7 @@ function NoInternetPage() {
         again.
       </p>
       <Button label={"Trt again"} className={"primary"} />
-    </div>
+    </motion.div>
   );
 }
 

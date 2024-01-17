@@ -1,9 +1,17 @@
 import React from "react";
 import Button from "../components/button";
+import {motion} from 'framer-motion';
 
 function FoodViewPage() {
   return (
-    <div className="foodViewPage">
+    <motion.div
+    animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.5,
+        delay: 0.1,
+      }}
+      initial={{ opacity: 0, scale: 0.5 }}
+    className="foodViewPage">
       <div className="foodViewPage-header">
         <svg
           onClick={() => navigate(-1)}
@@ -40,7 +48,7 @@ function FoodViewPage() {
       </div>
 
       <Button label={"Add to card"} className={"primary"} />
-    </div>
+    </motion.div>
   );
 }
 

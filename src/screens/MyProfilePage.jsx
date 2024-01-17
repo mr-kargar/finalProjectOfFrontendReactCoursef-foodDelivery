@@ -5,6 +5,7 @@ import LinkItem from "../components/LinkItem";
 import { Link } from "react-router-dom";
 import { userInfoFetch } from "../redux/userInfoSlice";
 import { useDispatch , useSelector } from "react-redux";
+import { motion } from "framer-motion";
 
 function MyProfilePage() {
   const token = localStorage.getItem("token");
@@ -17,7 +18,14 @@ const userInfo = useSelector((state) => state.userInfo);
   }, []);
 
   return (
-    <div className="myProfilePage">
+    <motion.div 
+    animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.5,
+        delay: 0.1,
+      }}
+      initial={{ opacity: 0, scale: 0.5 }}
+    className="myProfilePage">
       <div className="myProfilePage-header">
         <svg
           onClick={() => navigate(-1)}
@@ -67,7 +75,7 @@ const userInfo = useSelector((state) => state.userInfo);
 
         <Button label={"Update"} className={"primary button-bottom"} />
       </div>
-    </div>
+    </motion.div>
   );
 }
 

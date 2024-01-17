@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { foodDetailsFetch } from "../redux/foodDetailsSlice";
 import Loader from "../components/Loader";
+import {motion} from 'framer-motion';
 
 function FoodDetailsPage() {
   const token = localStorage.getItem("token");
@@ -28,7 +29,14 @@ function FoodDetailsPage() {
   }, []);
 
   return (
-    <div className="foodDetailsPage">
+    <motion.div
+    animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.5,
+        delay: 0.1,
+      }}
+      initial={{ opacity: 0, scale: 0.5 }}
+     className="foodDetailsPage">
       <div className="header">
         <svg
           onClick={() => navigate(-1)}
@@ -67,7 +75,7 @@ function FoodDetailsPage() {
         className={"primary button-bottom"}
         onClick={addToCartHandler}
       />
-    </div>
+    </motion.div>
   );
 }
 

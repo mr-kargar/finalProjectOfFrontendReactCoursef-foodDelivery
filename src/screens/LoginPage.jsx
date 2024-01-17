@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { userLogin } from "../redux/userSlice";
 import Alert from "../components/Alert";
 import { useSelector } from "react-redux";
+import { motion } from "framer-motion";
 
 function LoginPage() {
   const [emailLogin, setEmailLogin] = useState("");
@@ -133,7 +134,15 @@ function LoginPage() {
   };
 
   return (
-    <div className="loginPage">
+    <motion.div
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{
+      duration: 0.5,
+      delay: 0.1,
+    }}
+    initial={{ opacity: 0, scale: 0.5 }}
+      className="loginPage"
+    >
       <div className="loginPage-content">
         <div className="loginPage-content-topContainer">
           <img src="src\assets\images\logo.png" alt="logo" />
@@ -253,7 +262,7 @@ function LoginPage() {
           />
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
